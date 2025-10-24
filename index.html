@@ -466,69 +466,97 @@
     }
 
     /* About */
-    .about-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 4rem;
+    .about-intro {
+      max-width: 900px;
+      margin: 0 auto 3rem auto;
       text-align: left;
-      max-width: 1000px;
-      margin: 0 auto;
-      align-items: flex-start;
       padding: 0 2rem;
     }
-    .about-left, .about-right {
-      flex: 1;
-      min-width: 300px;
-      max-width: 450px;
-    }
-    .about-left h3 {
+    
+    .about-intro h3 {
       font-size: 2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       color: #e5e5e5;
     }
-    .about-left h4 {
-      font-size: 1.5rem;
-      color: #f0c46b;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+    
+    .about-intro p {
+      line-height: 1.8;
+      color: #ccc;
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
     }
-    .about-right h4 {
-      font-size: 1.5rem;
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      align-items: start;
+    }
+    
+    .about-photo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .profile-photo {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 3px solid rgba(240, 196, 107, 0.3);
+    }
+    
+    .about-details h4 {
+      font-size: 1.4rem;
       color: #f0c46b;
       margin-top: 0;
       margin-bottom: 1rem;
+      font-weight: 600;
     }
-    .about-left p {
-      line-height: 1.7;
-      color: #ccc;
-    }
-    .about-left ul, .about-right ul {
+    
+    .about-details ul {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 0 0 2.5rem 0;
     }
-    .about-left ul li, .about-right ul li {
-      margin: 0.8rem 0;
+    
+    .about-details ul li {
+      margin: 0.7rem 0;
       color: #ccc;
       line-height: 1.6;
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      font-size: 0.95rem;
     }
-    .about-left ul li::after, .about-right ul li::after {
+    
+    .about-details ul li::after {
       content: attr(data-year);
       margin-left: 2rem;
       color: #999;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      flex-shrink: 0;
     }
-    .profile-photo {
-      width: 250px;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 20px;
-      margin-bottom: 2rem;
-      border: 3px solid rgba(240, 196, 107, 0.3);
+    
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .about-photo-container {
+        order: -1;
+      }
+      
+      .profile-photo {
+        max-width: 220px;
+      }
     }
 
     /* Contact */
@@ -807,6 +835,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
       margin-top: 1rem;
+      align-items: start;
     }
     
     .modal-figure {
@@ -814,12 +843,16 @@
       border-radius: 15px;
       overflow: hidden;
       border: 1px solid rgba(240, 196, 107, 0.2);
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
     }
     
     .modal-figure img {
       width: 100%;
       height: auto;
       display: block;
+      object-fit: contain;
     }
     
     .modal-figure figcaption {
@@ -1189,7 +1222,7 @@
             </a>
             <a href="https://translationalbio.shinyapps.io/brex/" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"/></svg>
-              B-rex
+              Shiny
             </a>
             <a href="https://www.science.org/doi/10.1126/sciadv.adw3110" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
@@ -1204,10 +1237,22 @@
   <!-- About -->
   <section id="about" class="section about">
     <h2 class="section-title">About Me</h2>
-    <div class="about-container">
-      <div class="about-left">
-        <h3>Daniel Mouzo</h3>
-        <p>Senior bioinformatician with <span id="years-since-2018">6</span>+ years of experience translating biomedical questions into reproducible code and actionable insights. I design scalable Nextflow pipelines that convert data into clinical and experimental decisions.</p>
+    
+    <div class="about-intro">
+      <h3>Hi! I'm Dani</h3>
+      <p>I started my career in the wet lab, working with proteomics and discovering how much <span style="color: #f0c46b; font-weight: 500;">biological insight remains hidden inside large-scale datasets</span>. That realization led me to transition into bioinformatics and data science, driven by a simple idea: complex biology deserves solutions that are measurable, scalable, and reproducible.</p>
+      
+      <p>Today, I develop bioinformatic solutions for biomedical challenges. From multi-omic analysis in gene therapy to variant interpretation in cancer and cloud/HPC optimization. I enjoy collaborating with cross-functional teams, <span style="color: #f0c46b; font-weight: 500;">transforming raw data into actionable insights</span>, and building pipelines that accelerate scientific impact.</p>
+      
+      <p>Looking forward, I aim to continue connecting biology with engineering. I'm excited about automated analysis, AI-assisted discovery, and scalable workflows that advance precision medicine. Whether you're looking for someone to strengthen your computational strategy or to join a project pushing the boundaries of therapeutic discovery, I'd love to <span style="color: #f0c46b; font-weight: 500;">build that future together</span>.</p>
+    </div>
+    
+    <div class="about-content">
+      <div class="about-photo-container">
+        <img src="images/DanielFoto.jpg" alt="Daniel Mouzo" class="profile-photo">
+      </div>
+      
+      <div class="about-details">
         <h4>Certificates</h4>
         <ul>
           <li data-year="2025">Nextflow Advanced (Seqera)</li>
@@ -1216,9 +1261,7 @@
           <li data-year="2023">Cybersecurity (Cámara de Comercio)</li>
           <li data-year="2020">Data Science Specialized Program (IBM)</li>
         </ul>
-      </div>
-      <div class="about-right">
-        <img src="images/DanielFoto.jpg" alt="Daniel Mouzo" class="profile-photo">
+        
         <h4>Education</h4>
         <ul>
           <li data-year="2017–2020"><strong>Ph.D. Molecular Biology (USC)</strong></li>
@@ -1227,18 +1270,6 @@
         </ul>
       </div>
     </div>
-    <script>
-      (function(){
-        const startYear = 2018;
-        const compute = () => Math.max(0, new Date().getFullYear() - startYear);
-        const apply = () => {
-          const el = document.getElementById('years-since-2018');
-          if (el) el.textContent = compute();
-        };
-        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply);
-        else apply();
-      })();
-    </script>
   </section>
 
   <!-- Contact -->
@@ -1351,33 +1382,56 @@
       },
       scnextplot: {
         title: "scNextPlot - Single-Cell Visualization Package",
-        tags: ["R package", "Visualizations", "Open source", "Bioconductor"],
-        overview: `Open-source R package designed to accelerate single-cell RNA-seq data interpretation through 
-          concise, publication-ready visualizations. Provides a unified interface for common plotting tasks, 
-          reducing code complexity and improving reproducibility across research teams.`,
+        tags: ["R package", "Visualizations", "Open source", "Single-cell"],
+        
+        // Challenge → Approach → Impact
+        challenge: `<strong>Challenge:</strong> Single-cell RNA-seq analyses generate complex multidimensional datasets requiring 
+          dozens of visualization types to answer biological questions. Researchers spend hours writing repetitive plotting code, 
+          struggle with inconsistent figure styles across publications, and face steep learning curves for advanced visualization 
+          packages—delaying insights and hindering reproducibility.`,
+        
+        approach: `<strong>Approach:</strong> Developed open-source R package consolidating common single-cell visualizations into 
+          intuitive one-line functions. Implemented TreeDot plots combining hierarchical GSEA clustering with dot plots, Sankey diagrams 
+          for cell population tracking, proportion analysis tools for condition comparisons, and interactive CellRanger QC tables. 
+          Integrated seamlessly with Seurat workflows while maintaining publication-quality ggplot2 aesthetics.`,
+        
+        impact: `<strong>Impact:</strong> Reduced plotting code by 80% compared to base Seurat. Accelerated figure generation from 
+          hours to minutes. Adopted by 3+ research groups for standardizing publication figures. 9+ specialized plot types 
+          (TreeDot, Sankey, proportions, resolution checker). Comprehensive documentation enabling rapid onboarding of 
+          new team members.`,
+        
         technologies: [
           { name: "R", detail: "Core language" },
-          { name: "ggplot2", detail: "Visualization" },
-          { name: "Seurat", detail: "Integration" },
-          { name: "ComplexHeatmap", detail: "Advanced plots" },
-          { name: "devtools", detail: "Package development" }
-          
+          { name: "ggplot2", detail: "Visualization engine" },
+          { name: "Seurat", detail: "scRNA-seq integration" },
+          { name: "ComplexHeatmap", detail: "Advanced heatmaps" },
+          { name: "networkD3", detail: "Sankey diagrams" },
+          { name: "DT", detail: "Interactive tables" }
         ],
+        
         results: [
-          "Adopted by 3+ research groups for standardizing figures",
-          "Reduced plotting code by average 80% compared to base Seurat",
-          "9+ plot types optimized for publication quality",
-          "Comprehensive vignettes with real-world examples"
+          "Simplifies complex single-cell visualizations into one-line function calls",
+          "TreeDot: Hierarchical clustering of GSEA pathways with integrated dot plot representation",
+          "Sankey: Tracks cell population flow across clustering resolutions or experimental conditions",
+          "Proportion analysis: Statistical comparison of cell type frequencies between conditions",
+          "Interactive CellRanger tables: Dynamic QC summary with sortable/filterable metrics",
+          "Resolution checker: Automated testing of optimal Seurat clustering parameters",
+          "Comprehensive vignettes with real biological examples from published datasets"
         ],
+        
         figures: [
           {
-            src: "images/imgProy/scNextPlot.png",
-            caption: "Example output: Combined UMAP, gene expression heatmap, and marker dot plot in a single function call."
+            src: "images/imgProy/pop_ups/scNextPlot_TreeDot.JPG",
+            caption: "TreeDot visualization for multiple GSEA results. Combines hierarchical clustering of pathways with dot plot representation, enabling quick identification of enriched biological processes across conditions."
+          },
+          {
+            src: "images/imgProy/pop_ups/scNextPlot_Sankey.jpg",
+            caption: "Sankey plot for Seurat object showing cell population flow across clusters. Interactive visualization tracks how cell identities change across different clustering resolutions or experimental conditions."
           }
         ],
+        
         links: [
-          { url: "https://github.com/damouzo/scNextPlot", text: "GitHub Repository", icon: "github", primary: true },
-          { url: "https://damouzo.github.io/scNextPlot/", text: "Documentation", icon: "web" }
+          { url: "https://github.com/damouzo/scNextPlot", text: "GitHub Repository", icon: "github", primary: true }
         ]
       },
       endocarditis: {
@@ -1414,31 +1468,59 @@
       genesetcluster: {
         title: "GeneSetCluster 2.0 - GSEA Integration Tool",
         tags: ["R package", "GSEA", "Open source", "Shiny app"],
-        overview: `Comprehensive R package for summarizing and integrating gene set enrichment analysis (GSEA) 
-          results across multiple experiments and databases. Features parallel processing optimization and 
-          an intuitive Shiny web application enabling non-programmers to perform advanced pathway analysis.`,
+        
+        // Challenge → Approach → Impact
+        challenge: `<strong>Challenge:</strong> Multi-omics studies generate hundreds of enriched pathways across conditions, 
+          creating overwhelming redundancy (e.g., "PI3K signaling," "PI3K/AKT pathway," "AKT activation" appear as separate hits). 
+          Researchers waste days manually grouping redundant terms, struggle to compare results across different enrichment tools 
+          (GSEA, GREAT, clusterProfiler), and clinicians lack accessible interfaces to interpret pathway biology—blocking 
+          translational insights.`,
+        
+        approach: `<strong>Approach:</strong> Engineered R package with seriation-based intelligent clustering to automatically group 
+          redundant pathways by gene overlap. Implemented parallel processing for 10x speed improvement, integrated 15+ databases 
+          (KEGG, Reactome, GO, MSigDB), and added tissue enrichment annotations. Developed intuitive Shiny web interface enabling 
+          clinicians and biologists to upload results, cluster pathways, and generate publication-ready visualizations without 
+          coding experience.`,
+        
+        impact: `<strong>Impact:</strong> Reduced pathway redundancy by 70% through automated clustering → analysis time from 
+          days to minutes via parallelization → integrated 15+ databases and multiple GSA tools (GSEA, GREAT, clusterProfiler) → 
+          Shiny app democratized access for 200+ non-programmer users across 6+ countries → published in <em>BMC Bioinformatics</em> 
+          (2025) → fostered multidisciplinary collaboration between bioinformaticians and clinicians.`,
+        
         technologies: [
           { name: "R", detail: "Core development" },
           { name: "Shiny", detail: "Web interface" },
-          { name: "parallel", detail: "Multi-core processing" },          
-          { name: "clusterProfiler", detail: "Enrichment analysis" }
+          { name: "parallel", detail: "Multi-core processing" },
+          { name: "seriation", detail: "Optimal clustering" },
+          { name: "clusterProfiler", detail: "Enrichment" },
+          { name: "fgsea", detail: "Fast GSEA" }
         ],
+        
         results: [
-          "10x faster than original version through parallelization",
-          "Integrates 15+ pathway databases (KEGG, Reactome, GO, etc.)",
-          "Shiny app has 200+ users from 6+ countries",
-          "Automated clustering reduces pathway redundancy by 70%"
+          "10x performance improvement: Parallelization + optimized algorithms accelerate large-scale analyses",
+          "Automated redundancy reduction: Seriation-based clustering consolidates 70% of redundant pathways",
+          "Universal integration: Accepts results from GSEA, GREAT, clusterProfiler, enrichR, and custom formats",
+          "15+ database support: KEGG, Reactome, GO, Hallmark, MSigDB, WikiPathways, BioCarta",
+          "Tissue enrichment: Contextualizes pathways using comprehensive tissue-specific expression databases",
+          "Shiny democratization: 200+ clinicians/biologists perform advanced analyses without coding",
+          "Published workflow: <em>BMC Bioinformatics</em> (2025) documents R package + Shiny best practices"
         ],
+        
         figures: [
           {
-            src: "images/imgProy/GeneSetCluster.png",
-            caption: "Network visualization of clustered gene sets. Node size represents enrichment significance, edge width shows gene overlap."
+            src: "images/imgProy/pop_ups/GeneSetCluster_ConceptMap.png",
+            caption: "Conceptual workflow of GeneSetCluster 2.0. The tool accepts multiple gene-set analysis results, performs intelligent clustering to reduce redundancy, and provides comprehensive visualizations including network diagrams, heatmaps, and functional annotations."
+          },
+          {
+            src: "images/imgProy/pop_ups/GeneSetCluster_Shinny.png",
+            caption: "Screenshot of the user-friendly Shiny application interface. The web-based platform enables clinicians and biologists to perform advanced gene-set integration and visualization without programming knowledge, fostering multidisciplinary collaboration."
           }
         ],
+        
         links: [
           { url: "https://github.com/TranslationalBioinformaticsUnit/GeneSetCluster2.0", text: "GitHub Repository", icon: "github", primary: true },
           { url: "https://translationalbio.shinyapps.io/genesetcluster/", text: "Shiny App", icon: "web" },
-          { url: "https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06249-3", text: "Publication", icon: "paper" }
+          { url: "https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06249-3", text: "BMC Bioinformatics Paper", icon: "paper" }
         ]
       },
       ball: {

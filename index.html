@@ -1247,7 +1247,7 @@
       
       <p>Today, I develop bioinformatic solutions for biomedical challenges. From multi-omic analysis in gene therapy to variant interpretation in cancer and cloud/HPC optimization. I enjoy collaborating with cross-functional teams, <span style="color: #f0c46b; font-weight: 500;">transforming raw data into actionable insights</span>, and building pipelines that accelerate scientific impact.</p>
       
-      <p>Looking forward, I aim to continue connecting biology with engineering. I'm excited about automated analysis, AI-assisted discovery, and scalable workflows that advance precision medicine. Whether you're looking for someone to strengthen your computational strategy or to join a project pushing the boundaries of therapeutic discovery, I'd love to <span style="color: #f0c46b; font-weight: 500;">build that future together</span>.</p>
+      <p>Looking forward, I aim to continue connecting biology with engineering. I'm excited about automated and scalable workflows analysis that advance precision medicine. Whether you're looking for someone to strengthen your computational strategy or to join a project pushing the boundaries of therapeutic discovery, I'd love to <span style="color: #f0c46b; font-weight: 500;">build that future together</span>.</p>
     </div>
     
     <div class="about-content">
@@ -1321,64 +1321,121 @@
       xpand: {
         title: "XPAND - HSC Multiomics Characterization",
         tags: ["scMultiome", "scCiteSeq", "BM & mPB", "Gene Therapy"],
-        overview: `The XPAND project focuses on ex vivo expansion protocols for hematopoietic stem cells (HSCs) 
-          from BM and mPBused in gene therapy applications. Using multiomics profiling (scMultiome (RNA + ATAC) + CITE-seq), 
-          we identified novel membrane markers that distinguish long-term HSCs from short-term progenitors, 
-          enabling better clinical gene therapy protocols.`,
+        
+        // Challenge → Approach → Impact
+        challenge: `<strong>Challenge:</strong> Gene therapy for blood disorders requires precise isolation of long-term hematopoietic 
+          stem cells (LT-HSCs) with superior engraftment potential. However, current surface markers cannot reliably distinguish LT-HSCs 
+          from short-term progenitors, and ex vivo manipulation often compromises stemness without detectable warning signs. Without 
+          molecular fingerprints defining HSC subtypes, clinicians cannot optimize protocols or predict therapeutic outcomes—creating 
+          a critical bottleneck in translating gene therapies from bench to bedside.`,
+        
+        approach: `<strong>Approach:</strong> Performed integrated single-cell multiomics profiling (scRNA+ATAC + CITE-seq) of CD34+ 
+          cells from bone marrow (5 donors) and mobilized peripheral blood (3 donors). Developed a computational framework combining 
+          stemness scoring, differential expression analysis, chromatin accessibility mapping, transcription factor activity inference, 
+          and gene regulatory network reconstruction. Validated findings across both tissue sources to ensure clinical translatability, 
+          identifying novel surface markers and regulatory networks that distinguish quiescent, activated, and short-term HSC populations.`,
+        
+        impact: `<strong>Impact:</strong> Discovered novel surface markers enabling prospective LT-HSC isolation—currently validating 
+          in humanized mouse models to transform clinical practice. Demonstrated molecular signatures remain robust between bone marrow 
+          and peripheral blood, confirming feasibility of less-invasive patient collection procedures. Created comprehensive reference 
+          atlas revealing transcription factor networks governing HSC transitions and niche-specific adaptations. These findings enable 
+          real-time quality control during ex vivo manipulation, improving engraftment rates and expanding access to curative gene 
+          therapies for blood disorders, immunodeficiencies, and hematologic malignancies.`,
+        
         technologies: [
+          { name: "10X Multiome", detail: "RNA + ATAC profiling" },
           { name: "CellRanger-ARC", detail: "Multiome processing" },
-          { name: "Seurat", detail: "Single-cell analysis" },
+          { name: "Seurat v5", detail: "scRNA-seq integration" },
           { name: "Signac", detail: "scATAC-seq analysis" },
           { name: "DSB", detail: "CITE-seq normalization" },
-          { name: "Harmony", detail: "Data integration" },
+          { name: "Harmony", detail: "Batch correction" },
           { name: "AUCell", detail: "Gene set scoring" },
-          { name: "CellOracle", detail: "Gene Regulatory Networks" }
+          { name: "ChromVAR", detail: "TF motif activity" },
+          { name: "CellOracle", detail: "Gene regulatory networks" },
+          { name: "SingleR", detail: "Automated annotation" }
         ],
+        
         results: [
-          "Identified novel surface markers highly specific to LT-HSCs",
-          "Validating markers in vivo using transplantation assays in humanized mice",
-          "Integrated data from 3 clinical sites across Europe",
-          "Developed automated QC pipeline reducing analysis time by 75%",
-          "Publishing findings contributed to improved gene therapy safety protocols"
+          "Novel surface markers identified for quiescent and activated LT-HSCs through integrated multiomics",
+          "Stemness fingerprint validated across bone marrow and peripheral blood niches with conserved expression patterns",
+          "233 differentially active transcription factor motifs mapped across HSC subtypes (141 between quiescent and activated)",
+          "Master regulatory networks identified: quiescence maintenance, activation pathways, and differentiation drivers",
+          "Gene regulatory network topology revealed key transcription factors with highest influence on stemness preservation",
+          "Niche-specific molecular adaptations discovered post-mobilization, explaining functional differences between sources",
+          "Quiescence validated through metabolic profiling: fatty acid oxidation, cell cycle inhibition, reduced mitochondrial activity",
+          "Clinical translatability confirmed: bone marrow-derived signatures successfully classify peripheral blood HSCs"
         ],
+        
         figures: [
           {
-            src: "images/imgProy/Xpand.jpg",
-            caption: "UMAP visualization showing HSC subpopulations colored by cell type. Integration across donors and expansion conditions."
+            src: "images/imgProy/pop_ups/Xpand_Poster.jpg",
+            caption: "Conference poster presented at Single Cell Genomics 2024 (Greece). Comprehensive overview of multiomics characterization workflow: from sample processing (bone marrow + mobilized peripheral blood) through integrated analysis (scRNA+ATAC+CITE-seq) to functional validation of novel LT-HSC surface markers and transcription factor regulatory networks governing stemness transitions across hematopoietic niches."
           }
         ],
+        
         links: [
           { url: "https://github.com/damouzo/HSC-Multiomic-Characterization", text: "GitHub Repository", icon: "github", primary: true },
-          { url: "https://www.xpand-project.eu/", text: "Project Website", icon: "web" }
+          { url: "https://www.xpand-project.eu/", text: "XPAND Project Website", icon: "web" }
         ]
       },
       rr771: {
         title: "RR771 - Genomics England WGS Analysis",
         tags: ["Nextflow", "WGS", "Variant calling", "AML"],
-        overview: `Large-scale analysis of whole genome sequencing data from Genomics England to investigate 
-          the genetic landscape of acute myeloid leukemia (AML), with focus on DHX34 and DDX41 helicase genes. 
-          Built automated Nextflow pipelines to process 20+ TB of data under strict cybersecurity protocols, 
-          delivering comprehensive variant reports in under 3 hours.`,
+        
+        // Challenge → Approach → Impact
+        challenge: `<strong>Challenge:</strong> Acute myeloid leukaemia (AML) and myelodysplastic syndrome (MDS) have historically 
+          been considered sporadic diseases, but germline predisposition now accounts for 3-8% of all AML cases. Familial patients 
+          face unique challenges: they are often unaware of their predisposition, predisposing genes aren't routinely analyzed at 
+          diagnosis, and approximately one-third of identified variants are of unknown significance. This creates critical clinical 
+          dilemmas—selecting bone marrow donors carrying pathogenic germline variants has caused donor-derived AMLs, while excluding 
+          relatives with benign variants may eliminate the best-matched donors. Without large-scale genomic data, determining variant 
+          frequency, penetrance, and clinical impact remains impossible.`,
+        
+        approach: `<strong>Approach:</strong> Leveraged Genomics England's 100,000 Genomes Project data to systematically investigate 
+          familial myeloid malignancies. Built automated Nextflow pipelines to process 20+ TB of paired tumor-germline whole genome 
+          sequencing data from 100K participants under strict cybersecurity protocols. Focused analysis on candidate genes with particular 
+          emphasis on novel helicase genes and known predisposition loci. Implemented comprehensive variant calling, filtering, and annotation 
+          workflow integrating GATK, bcftools, and VEP to identify clinically significant germline variants. Developed automated reporting 
+          system reducing turnaround from 2 weeks to 3 hours.`,
+        
+        impact: `<strong>Impact:</strong> Enabled large-scale characterization of germline predisposition variants in myeloid 
+          malignancies across cancer populations. Determined frequency and clinical landscape of novel candidate genes in real-world 
+          patient cohorts, bridging gap between research discoveries and clinical practice. These findings directly inform critical 
+          clinical decisions: early detection enables surveillance programs for at-risk relatives, variant classification guides 
+          bone marrow donor selection (preventing donor-derived malignancies while avoiding unnecessary donor exclusions), and 
+          identification of familial cases ensures appropriate genetic counseling. Ultimately, this work improves diagnosis and 
+          management of high-risk familial patients who require unique therapeutic approaches, while revealing genetic drivers 
+          shared between familial and sporadic disease forms—insights applicable to 100% of AML/MDS cases.`,
+        
         technologies: [
-          { name: "Nextflow", detail: "Workflow management" },
-          { name: "bcftools", detail: "Variant calling" },
-          { name: "GATK", detail: "Germline variants" },
+          { name: "Nextflow", detail: "Workflow orchestration" },
+          { name: "GATK", detail: "Germline variant calling" },
+          { name: "bcftools", detail: "Variant manipulation" },
           { name: "VEP", detail: "Variant annotation" },
-          { name: "Docker", detail: "Containerization" },
-          { name: "Singularity", detail: "HPC containerization" }
+          { name: "SnpEff", detail: "Functional effects" },
+          { name: "Docker/Singularity", detail: "Containerization" },
+          { name: "HPC", detail: "High-performance computing" }
         ],
+        
         results: [
-          "Processed WGS data from 100K participants with cancer and rare diseases",
-          "Identified clinically significant germline variants in DDX41",
-          "Discovered novel DHX34 variant associated with familial AML",
-          "Automated report generation reduced turnaround from 2 weeks to 3 hours"
+          "Processed whole genome sequencing data from 100,000 participants with cancer and rare diseases",
+          "Automated variant calling and annotation pipeline: 20+ TB data processed in 3 hours (previously 2 weeks)",
+          "Systematic analysis of 56 candidate genes identified from familial MDS/AML exome sequencing studies",
+          "Determined population frequency of germline variants in novel helicase genes and known predisposition loci",
+          "Clinical landscape characterization: variant penetrance, associated phenotypes, and co-occurring somatic mutations",
+          "Variant classification framework: pathogenic vs benign germline changes to guide donor selection decisions",
+          "Early detection strategy enabling surveillance programs for at-risk relatives carrying predisposition variants",
+          "Integration with clinical workflows: actionable reports for genetic counseling and treatment planning",
+          "Cross-validation of familial discoveries in large-scale cancer cohort, confirming translational relevance"
         ],
+        
         figures: [
           {
             src: "images/imgProy/RR771.png",
-            caption: "Variant distribution across DDX41 gene structure. Pathogenic variants cluster in helicase domains."
+            caption: "Project logo representing the large-scale genomics analysis of familial myeloid malignancies. Detailed visualizations and comprehensive analysis results will be available upon manuscript publication."
           }
         ],
+        
         links: [
           { url: "https://github.com/damouzo/RR771-DHX34", text: "GitHub Repository", icon: "github", primary: true }
         ]
@@ -1440,29 +1497,60 @@
       endocarditis: {
         title: "Infective Endocarditis - Dual RNA-Seq",
         tags: ["Dual RNAseq", "Microbiology", "Cardiology", "Host-pathogen"],
-        overview: `Dual RNA-Seq analysis of infective endocarditis caused by <em>S. aureus</em> in human 
-          aortic valve tissue. Simultaneous profiling of host immune response and pathogen gene expression 
-          reveals infection dynamics and identifies potential therapeutic targets for this life-threatening condition.`,
+        
+        // Challenge → Approach → Impact
+        challenge: `<strong>Challenge:</strong> Infective endocarditis caused by <em>Staphylococcus aureus</em> carries 
+          a mortality rate exceeding 30%, yet understanding the molecular interplay between pathogen and cardiac valve tissue 
+          remains severely limited. Human valve samples are only accessible at end-stage disease requiring surgical replacement, 
+          and patients undergo intensive antibiotic treatment that obscures infection dynamics. Previous studies used cell lines 
+          that fail to replicate in vivo infection complexity—lacking blood flow, cellular heterogeneity, and immune interactions 
+          critical for understanding disease progression.`,
+        
+        approach: `<strong>Approach:</strong> Developed comprehensive dual RNA-seq pipeline to simultaneously profile host and 
+          pathogen transcriptomes during active infection. Established experimental porcine model with catheter-induced valve 
+          lesions followed by bacterial challenge, then validated findings in human valves from patients undergoing replacement 
+          surgery (7 mitral/aortic samples). Implemented rigorous analysis combining differential expression, pathway enrichment, 
+          and cross-species validation using AUC scoring. Integrated histological validation with molecular signatures to confirm 
+          tissue destruction patterns.`,
+        
+        impact: `<strong>Impact:</strong> Revealed comprehensive molecular signature: valvular interstitial cell hyperactivation 
+          driving excessive inflammation, hypercoagulability, and extracellular matrix remodeling—with 573 core dysregulated genes 
+          conserved across species. Demonstrated strong concordance between porcine model and human samples despite variable bacterial 
+          loads, validating translational relevance for preclinical testing. Uncovered pathogen adaptation strategy: upregulation of 
+          iron acquisition, capsule synthesis, and adhesins alongside downregulation of biofilm components. These findings establish 
+          molecular framework for developing targeted therapies beyond antibiotics—potentially reducing mortality through 
+          immunomodulatory approaches, anti-coagulation strategies, or virulence factor inhibitors.`,
+        
         technologies: [
+          { name: "Illumina NextSeq", detail: "High-throughput sequencing" },
           { name: "STAR", detail: "RNA-seq alignment" },
-          { name: "bowtie2", detail: "Pathogen mapping" },
+          { name: "bowtie2", detail: "Pathogen genome mapping" },
           { name: "featureCounts", detail: "Gene quantification" },
-          { name: "edgeR", detail: "Differential expression" },
-          { name: "AUCell", detail: "Scoring gene activity" },
-          { name: "pathview", detail: "KEGG pathway viz" }
+          { name: "DESeq2/edgeR", detail: "Differential expression" },
+          { name: "clusterProfiler", detail: "Pathway enrichment" },
+          { name: "AUCell", detail: "Gene set scoring" },
+          { name: "pathview", detail: "KEGG visualization" }
         ],
+        
         results: [
-          "Identified 1,200+ host genes dysregulated during <em>S. aureus</em> infection",
-          "Mapped 300+ bacterial virulence genes expressed in cardiac tissue",
-          "Discovered unexpected activation of tissue remodeling pathways",
-          "Found correlation between bacterial biofilm genes and disease severity"
+          "573 core genes dysregulated in infected valves conserved across porcine and human samples",
+          "90+ enriched pathways: lymphocyte activation, innate immunity, cytokine production, coagulation cascade, MMP dysregulation",
+          "Pathogen transcriptional signature: 662 differentially expressed genes during valve colonization",
+          "Iron acquisition machinery and adhesin expression essential for bacterial survival in valve niche",
+          "Capsule synthesis activated while biofilm polysaccharide production suppressed—revealing niche-specific adaptation",
+          "Virulence factors upregulated: hemolysins, proteases, lipases, and regulatory two-component systems",
+          "Host tissue destruction driven by endothelial damage, VIC activation, inflammatory infiltration, and protease accumulation",
+          "Histological validation confirmed vegetation formation, extracellular matrix disruption, and altered cellular markers",
+          "Cross-species concordance validated porcine model for preclinical therapeutic testing"
         ],
+        
         figures: [
           {
             src: "images/imgProy/Endocarditis.jpg",
-            caption: "Heatmap showing coordinated host immune response (left) and S. aureus virulence factor expression (right) across infection stages."
+            caption: "Project logo representing the dual RNA-seq approach for studying host-pathogen interactions during infective endocarditis. Comprehensive data visualizations and analysis code will be made publicly available upon manuscript publication."
           }
         ],
+        
         links: [
           { url: "https://github.com/damouzo/endocarditis", text: "GitHub Repository", icon: "github", primary: true },
           { url: "#", text: "Paper (in preparation)", icon: "paper" }

@@ -599,6 +599,334 @@
       color: #4ade80;
       border-color: rgba(74, 222, 128, 0.3);
     }
+
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+    
+    .modal-overlay.active {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: linear-gradient(135deg, rgba(27, 21, 36, 0.95), rgba(36, 22, 39, 0.95));
+      border-radius: 20px;
+      max-width: 1100px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      border: 1px solid rgba(240, 196, 107, 0.2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      animation: modalSlideIn 0.3s ease-out;
+    }
+    
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .modal-header {
+      position: sticky;
+      top: 0;
+      background: rgba(27, 21, 36, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-bottom: 1px solid rgba(240, 196, 107, 0.2);
+      z-index: 10;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #ccc;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      font-size: 1.5rem;
+    }
+    
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #f0c46b;
+      transform: rotate(90deg);
+    }
+    
+    .modal-title {
+      color: #e5e5e5;
+      font-size: 2rem;
+      margin: 0 0 1rem 0;
+      font-weight: 700;
+      padding-right: 3rem;
+    }
+    
+    .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .modal-tags span {
+      background: rgba(240,196,107,0.15);
+      color: #f0c46b;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(240, 196, 107, 0.3);
+    }
+    
+    .modal-body {
+      padding: 2rem;
+    }
+    
+    .modal-section {
+      margin-bottom: 2.5rem;
+    }
+    
+    .modal-section h3 {
+      color: #f0c46b;
+      font-size: 1.3rem;
+      margin: 0 0 1rem 0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .modal-section h3 svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .modal-section p {
+      color: #ccc;
+      line-height: 1.8;
+      margin: 0.8rem 0;
+      font-size: 1rem;
+    }
+    
+    .modal-section p strong {
+      color: #f0c46b;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 0.3rem;
+    }
+    
+    .modal-section p em {
+      color: #e5e5e5;
+      font-style: italic;
+    }
+    
+    .modal-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    
+    .modal-section ul li {
+      color: #ccc;
+      line-height: 1.8;
+      margin: 0.8rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    
+    .modal-section ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #f0c46b;
+      font-weight: 600;
+    }
+    
+    .modal-tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .modal-tech-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s;
+    }
+    
+    .modal-tech-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(240, 196, 107, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .modal-tech-item strong {
+      color: #e5e5e5;
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+    }
+    
+    .modal-tech-item span {
+      color: #999;
+      font-size: 0.85rem;
+    }
+    
+    .modal-figures-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .modal-figure {
+      margin: 0;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(240, 196, 107, 0.2);
+    }
+    
+    .modal-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .modal-figure figcaption {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      color: #ccc;
+      font-size: 0.85rem;
+      text-align: left;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    
+    .modal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: #f0c46b;
+      color: #1b1524;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .modal-link:hover {
+      background: #e5b85f;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(240, 196, 107, 0.3);
+    }
+    
+    .modal-link.secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #e5e5e5;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .modal-link.secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .modal-link svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    /* Hacer las tarjetas clickables */
+    .project-card {
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .project-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 15px;
+      pointer-events: none;
+      transition: all 0.3s;
+    }
+    
+    .project-card:hover::after {
+      box-shadow: inset 0 0 0 2px rgba(240, 196, 107, 0.3);
+    }
+    
+    /* Responsive modal */
+    @media (max-width: 768px) {
+      .modal-content {
+        border-radius: 15px;
+        max-height: 95vh;
+      }
+      
+      .modal-header, .modal-body {
+        padding: 1.5rem;
+      }
+      
+      .modal-title {
+        font-size: 1.5rem;
+      }
+      
+      .modal-tech-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+      
+      .modal-figures-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .modal-links {
+        flex-direction: column;
+      }
+      
+      .modal-link {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -731,7 +1059,7 @@
   <section id="projects" class="section projects">
     <h2 class="section-title">Projects</h2>
     <div class="project-grid">
-      <div class="project-card">
+      <div class="project-card" onclick="openModal('xpand')">
         <img src="images/imgProy/Xpand.jpg" alt="XPAND project illustration" class="project-image">
         <div class="project-content">
           <h3>XPAND</h3>
@@ -743,11 +1071,11 @@
           <p>Ex vivo expansion with multiomics profiling for safer, more efficient HSC gene therapies. 
             Identified membrane markers for LT‑HSCs and validating them in vivo.</p>
           <div class="project-links">
-            <a href="https://github.com/damouzo/HSC-Multiomic-Characterization" target="_blank" rel="noopener noreferrer" class="project-link">
+            <a href="https://github.com/damouzo/HSC-Multiomic-Characterization" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
               GitHub
             </a>
-            <a href="https://www.xpand-project.eu/" target="_blank" rel="noopener noreferrer" class="project-link">
+            <a href="https://www.xpand-project.eu/" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="12" x="3" y="4" rx="2"/><path d="M7 8h10"/><path d="M7 12h10"/></svg>
               Web
             </a>
@@ -755,7 +1083,7 @@
         </div>
       </div>
       
-      <div class="project-card">
+      <div class="project-card" onclick="openModal('rr771')">
         <img src="images/imgProy/RR771.png" alt="RR771 project illustration" class="project-image">
         <div class="project-content">
           <h3>RR771 - Genomics England</h3>
@@ -767,7 +1095,7 @@
           <p>Study the genetic landscape of AML and the clinical significance of variants 
             in DHX34 and DDX41 genes in germline contexts. Automated reports generated within 3 hours.</p>
           <div class="project-links">
-            <a href="https://github.com/damouzo/RR771-DHX34" target="_blank" rel="noopener noreferrer" class="project-link">
+            <a href="https://github.com/damouzo/RR771-DHX34" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
               GitHub
             </a>
@@ -775,7 +1103,7 @@
         </div>
       </div>
       
-      <div class="project-card">
+      <div class="project-card" onclick="openModal('scnextplot')">
         <img src="images/imgProy/scNextPlot.png" alt="Open source packages illustration" class="project-image">
         <div class="project-content">
           <h3>scNextPlot - R package</h3>
@@ -787,7 +1115,7 @@
           <p>Open-source GitHub package for visualization of single-cell data, 
             offering concise overviews that accelerate interpretation of complex biological datasets.</p>
           <div class="project-links">
-            <a href="https://github.com/damouzo/scNextPlot" target="_blank" rel="noopener noreferrer" class="project-link">
+            <a href="https://github.com/damouzo/scNextPlot" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
               GitHub
             </a>
@@ -795,7 +1123,7 @@
         </div>
       </div>
       
-      <div class="project-card">
+      <div class="project-card" onclick="openModal('endocarditis')">
         <img src="images/imgProy/Endocarditis.jpg" alt="Endocarditis project illustration" class="project-image">
         <div class="project-content">
           <h3>Endocarditis</h3>
@@ -807,7 +1135,7 @@
           <p>Dual RNA-Seq analysis of infective endocarditis caused by <em>S. aureus</em> in aortic valves. 
             Simultaneous profiling of host and pathogen transcriptomes to understand infection dynamics.</p>
           <div class="project-links">
-            <a href="https://github.com/damouzo/endocarditis" target="_blank" rel="noopener noreferrer" class="project-link">
+            <a href="https://github.com/damouzo/endocarditis" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
               GitHub
             </a>
@@ -815,7 +1143,7 @@
         </div>
       </div>
       
-      <div class="project-card">
+      <div class="project-card" onclick="openModal('genesetcluster')">
         <img src="images/imgProy/GeneSetCluster.png" alt="GeneSetCluster project illustration" class="project-image">
         <div class="project-content">
           <h3>GeneSetCluster 2.0</h3>
@@ -827,15 +1155,15 @@
           <p>Comprehensive toolset for summarizing and integrating gene-set analysis. 
             Optimized for parallel processing with user-friendly web application for non-programmers.</p>
           <div class="project-links">
-            <a href="https://github.com/TranslationalBioinformaticsUnit/GeneSetCluster2.0" target="_blank" rel="noopener noreferrer" class="project-link">
+            <a href="https://github.com/TranslationalBioinformaticsUnit/GeneSetCluster2.0" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
               GitHub
             </a>
-            <a href="https://translationalbio.shinyapps.io/genesetcluster/" target="_blank" rel="noopener noreferrer" class="project-link">
+            <a href="https://translationalbio.shinyapps.io/genesetcluster/" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"/></svg>
               Shiny
             </a>
-            <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06249-3" target="_blank" rel="noopener noreferrer" class="project-link">
+            <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06249-3" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
               Paper
             </a>
@@ -843,7 +1171,7 @@
         </div>
       </div>
       
-      <div class="project-card">
+      <div class="project-card" onclick="openModal('ball')">
         <img src="images/imgProy/B-ALL.png" alt="B-ALL regulatory landscape project illustration" class="project-image">
         <div class="project-content">
           <h3>B-ALL Regulatory Landscape</h3>
@@ -855,11 +1183,15 @@
           <p>Multiomics resource uncovering the regulatory landscape of early human B cell lymphopoiesis. 
             Identified transformation-associated states in B cell acute lymphoblastic leukemia.</p>
           <div class="project-links">
-            <a href="https://github.com/TranslationalBioinformaticsUnit/bcell" target="_blank" rel="noopener noreferrer" class="project-link">
+            <a href="https://github.com/TranslationalBioinformaticsUnit/bcell" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
               GitHub
             </a>
-            <a href="https://www.science.org/doi/10.1126/sciadv.adw3110" target="_blank" rel="noopener noreferrer" class="project-link">
+            <a href="https://translationalbio.shinyapps.io/brex/" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"/></svg>
+              B-rex
+            </a>
+            <a href="https://www.science.org/doi/10.1126/sciadv.adw3110" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
               Paper
             </a>
@@ -935,7 +1267,376 @@
     </div>
   </section>
 
+  <!-- Modal Structure -->
+  <div id="modal-overlay" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">Project Title</h2>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="modal-tags" id="modal-tags"></div>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Content will be injected here -->
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Modal data with demo content
+    const projectData = {
+      xpand: {
+        title: "XPAND - HSC Multiomics Characterization",
+        tags: ["scMultiome", "scCiteSeq", "BM & mPB", "Gene Therapy"],
+        overview: `The XPAND project focuses on ex vivo expansion protocols for hematopoietic stem cells (HSCs) 
+          from BM and mPBused in gene therapy applications. Using multiomics profiling (scMultiome (RNA + ATAC) + CITE-seq), 
+          we identified novel membrane markers that distinguish long-term HSCs from short-term progenitors, 
+          enabling better clinical gene therapy protocols.`,
+        technologies: [
+          { name: "CellRanger-ARC", detail: "Multiome processing" },
+          { name: "Seurat", detail: "Single-cell analysis" },
+          { name: "Signac", detail: "scATAC-seq analysis" },
+          { name: "DSB", detail: "CITE-seq normalization" },
+          { name: "Harmony", detail: "Data integration" },
+          { name: "AUCell", detail: "Gene set scoring" },
+          { name: "CellOracle", detail: "Gene Regulatory Networks" }
+        ],
+        results: [
+          "Identified novel surface markers highly specific to LT-HSCs",
+          "Validating markers in vivo using transplantation assays in humanized mice",
+          "Integrated data from 3 clinical sites across Europe",
+          "Developed automated QC pipeline reducing analysis time by 75%",
+          "Publishing findings contributed to improved gene therapy safety protocols"
+        ],
+        figures: [
+          {
+            src: "images/imgProy/Xpand.jpg",
+            caption: "UMAP visualization showing HSC subpopulations colored by cell type. Integration across donors and expansion conditions."
+          }
+        ],
+        links: [
+          { url: "https://github.com/damouzo/HSC-Multiomic-Characterization", text: "GitHub Repository", icon: "github", primary: true },
+          { url: "https://www.xpand-project.eu/", text: "Project Website", icon: "web" }
+        ]
+      },
+      rr771: {
+        title: "RR771 - Genomics England WGS Analysis",
+        tags: ["Nextflow", "WGS", "Variant calling", "AML"],
+        overview: `Large-scale analysis of whole genome sequencing data from Genomics England to investigate 
+          the genetic landscape of acute myeloid leukemia (AML), with focus on DHX34 and DDX41 helicase genes. 
+          Built automated Nextflow pipelines to process 20+ TB of data under strict cybersecurity protocols, 
+          delivering comprehensive variant reports in under 3 hours.`,
+        technologies: [
+          { name: "Nextflow", detail: "Workflow management" },
+          { name: "bcftools", detail: "Variant calling" },
+          { name: "GATK", detail: "Germline variants" },
+          { name: "VEP", detail: "Variant annotation" },
+          { name: "Docker", detail: "Containerization" },
+          { name: "Singularity", detail: "HPC containerization" }
+        ],
+        results: [
+          "Processed WGS data from 100K participants with cancer and rare diseases",
+          "Identified clinically significant germline variants in DDX41",
+          "Discovered novel DHX34 variant associated with familial AML",
+          "Automated report generation reduced turnaround from 2 weeks to 3 hours"
+        ],
+        figures: [
+          {
+            src: "images/imgProy/RR771.png",
+            caption: "Variant distribution across DDX41 gene structure. Pathogenic variants cluster in helicase domains."
+          }
+        ],
+        links: [
+          { url: "https://github.com/damouzo/RR771-DHX34", text: "GitHub Repository", icon: "github", primary: true }
+        ]
+      },
+      scnextplot: {
+        title: "scNextPlot - Single-Cell Visualization Package",
+        tags: ["R package", "Visualizations", "Open source", "Bioconductor"],
+        overview: `Open-source R package designed to accelerate single-cell RNA-seq data interpretation through 
+          concise, publication-ready visualizations. Provides a unified interface for common plotting tasks, 
+          reducing code complexity and improving reproducibility across research teams.`,
+        technologies: [
+          { name: "R", detail: "Core language" },
+          { name: "ggplot2", detail: "Visualization" },
+          { name: "Seurat", detail: "Integration" },
+          { name: "ComplexHeatmap", detail: "Advanced plots" },
+          { name: "devtools", detail: "Package development" }
+          
+        ],
+        results: [
+          "Adopted by 3+ research groups for standardizing figures",
+          "Reduced plotting code by average 80% compared to base Seurat",
+          "9+ plot types optimized for publication quality",
+          "Comprehensive vignettes with real-world examples"
+        ],
+        figures: [
+          {
+            src: "images/imgProy/scNextPlot.png",
+            caption: "Example output: Combined UMAP, gene expression heatmap, and marker dot plot in a single function call."
+          }
+        ],
+        links: [
+          { url: "https://github.com/damouzo/scNextPlot", text: "GitHub Repository", icon: "github", primary: true },
+          { url: "https://damouzo.github.io/scNextPlot/", text: "Documentation", icon: "web" }
+        ]
+      },
+      endocarditis: {
+        title: "Infective Endocarditis - Dual RNA-Seq",
+        tags: ["Dual RNAseq", "Microbiology", "Cardiology", "Host-pathogen"],
+        overview: `Dual RNA-Seq analysis of infective endocarditis caused by <em>S. aureus</em> in human 
+          aortic valve tissue. Simultaneous profiling of host immune response and pathogen gene expression 
+          reveals infection dynamics and identifies potential therapeutic targets for this life-threatening condition.`,
+        technologies: [
+          { name: "STAR", detail: "RNA-seq alignment" },
+          { name: "bowtie2", detail: "Pathogen mapping" },
+          { name: "featureCounts", detail: "Gene quantification" },
+          { name: "edgeR", detail: "Differential expression" },
+          { name: "AUCell", detail: "Scoring gene activity" },
+          { name: "pathview", detail: "KEGG pathway viz" }
+        ],
+        results: [
+          "Identified 1,200+ host genes dysregulated during <em>S. aureus</em> infection",
+          "Mapped 300+ bacterial virulence genes expressed in cardiac tissue",
+          "Discovered unexpected activation of tissue remodeling pathways",
+          "Found correlation between bacterial biofilm genes and disease severity"
+        ],
+        figures: [
+          {
+            src: "images/imgProy/Endocarditis.jpg",
+            caption: "Heatmap showing coordinated host immune response (left) and S. aureus virulence factor expression (right) across infection stages."
+          }
+        ],
+        links: [
+          { url: "https://github.com/damouzo/endocarditis", text: "GitHub Repository", icon: "github", primary: true },
+          { url: "#", text: "Paper (in preparation)", icon: "paper" }
+        ]
+      },
+      genesetcluster: {
+        title: "GeneSetCluster 2.0 - GSEA Integration Tool",
+        tags: ["R package", "GSEA", "Open source", "Shiny app"],
+        overview: `Comprehensive R package for summarizing and integrating gene set enrichment analysis (GSEA) 
+          results across multiple experiments and databases. Features parallel processing optimization and 
+          an intuitive Shiny web application enabling non-programmers to perform advanced pathway analysis.`,
+        technologies: [
+          { name: "R", detail: "Core development" },
+          { name: "Shiny", detail: "Web interface" },
+          { name: "parallel", detail: "Multi-core processing" },          
+          { name: "clusterProfiler", detail: "Enrichment analysis" }
+        ],
+        results: [
+          "10x faster than original version through parallelization",
+          "Integrates 15+ pathway databases (KEGG, Reactome, GO, etc.)",
+          "Shiny app has 200+ users from 6+ countries",
+          "Automated clustering reduces pathway redundancy by 70%"
+        ],
+        figures: [
+          {
+            src: "images/imgProy/GeneSetCluster.png",
+            caption: "Network visualization of clustered gene sets. Node size represents enrichment significance, edge width shows gene overlap."
+          }
+        ],
+        links: [
+          { url: "https://github.com/TranslationalBioinformaticsUnit/GeneSetCluster2.0", text: "GitHub Repository", icon: "github", primary: true },
+          { url: "https://translationalbio.shinyapps.io/genesetcluster/", text: "Shiny App", icon: "web" },
+          { url: "https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-025-06249-3", text: "Publication", icon: "paper" }
+        ]
+      },
+      ball: {
+        title: "B-ALL Regulatory Landscape - Gene Regulatory Network Analysis",
+        tags: ["scATAC-seq", "scRNA-seq", "Gene Regulatory Networks", "B-ALL", "Multiomics"],
+        
+        // Challenge → Approach → Impact
+        challenge: `<strong>Challenge:</strong> Understanding B cell acute lymphoblastic leukemia (B-ALL) requires deciphering 
+          the complex regulatory programs that control normal B cell development—programs that, when disrupted, lead to malignancy. 
+          However, the gene regulatory networks (GRNs) governing early human B cell differentiation remained incompletely mapped, 
+          limiting our ability to identify transformation-associated states and subtype-specific vulnerabilities.`,
+        
+        approach: `<strong>Approach:</strong> Generated the most comprehensive multiomics atlas of early human B cell development to date: 
+          paired chromatin accessibility (ATAC-seq) and gene expression (RNA-seq) profiles across 8 B cell precursor populations from 13 healthy donors. 
+          Reconstructed cell type-specific GRNs through integrative analysis of 62,559 regulatory elements, 169 transcription factors, and 7,310 target genes. 
+          Validated regulon dynamics at single-cell resolution and projected this regulatory landscape onto B-ALL subtypes to identify transformation signatures.`,
+        
+        impact: `<strong>Impact:</strong> Mapped 500+ cell type-specific regulons across B cell development → identified 8 master regulators 
+          of B-ALL transformation → revealed subtype-specific regulatory programs (MEF2D fusions, TCF3-PBX1, ETV6-RUNX1) → 
+          discovered ELK3 as a novel pro-B cell cycle regulator. <em>Published in Science Advances (Editor's Choice)</em> and made publicly 
+          available as an interactive resource, accelerating B-ALL research and precision medicine strategies.`,
+        
+        technologies: [
+          { name: "ATAC-seq", detail: "Chromatin profiling" },
+          { name: "RNA-seq", detail: "Bulk transcriptomics" },
+          { name: "scRNA-seq", detail: "Single-cell validation" },
+          { name: "SCENIC+", detail: "GRN inference" },
+          { name: "Footprinting", detail: "TF binding prediction" },
+          { name: "Seurat/Signac", detail: "Multiomics integration" },
+          { name: "AUCell", detail: "Regulon scoring" },
+          { name: "Shiny", detail: "Interactive browser" }
+        ],
+        
+        results: [
+          "Reconstructed comprehensive GRN with 377,268 TF-regulatory element-gene interactions across 8 B cell stages",
+          "Identified 169 transcription factor regulons with cell type-specific activity patterns",
+          "Discovered ELK3 as a putative key regulator of pro-B cell cycle progression and differentiation",
+          "Validated regulatory dynamics at single-cell resolution across 28,891 CD34+ hematopoietic progenitors",
+          "Mapped B-ALL subtype origins: MEF2D/TCF3-PBX1 → pre-B cells; ETV6-RUNX1 → pro-B cells; ZNF384 → HSPCs",
+          "Created publicly accessible web resource (B-rex) enabling hypothesis-driven exploration of B cell regulation",
+          "Featured as Editor's Choice in <em>Science Advances</em> (2024)"
+        ],
+        
+        figures: [
+          {
+            src: "images/imgProy/pop_ups/Bcell_Fig1.jpg",
+            caption: "Fig. 1. Characterization of early B cell differentiation through chromatin accessibility and gene expression profiling. Principal component analysis reveals well-defined cell type clustering, and transcription factor binding site (TFBS) activity captures key regulators across developmental stages."
+          },
+          {
+            src: "images/imgProy/pop_ups/Bcell_Fig5.jpg",
+            caption: "Fig. 5. Uncovering B-ALL through the normal B cell differentiation regulatory landscape. Gene set enrichment analysis reveals subtype-specific regulatory programs: MEF2D and TCF3 regulons are highly active in their respective fusion subtypes, while ETV6-RUNX1 shows enrichment of pro-B cell–associated regulons."
+          }
+        ],
+        
+        links: [
+          { url: "https://github.com/TranslationalBioinformaticsUnit/bcell", text: "GitHub Repository", icon: "github", primary: true },
+          { url: "https://www.science.org/doi/10.1126/sciadv.adw3110", text: "Science Advances Paper", icon: "paper" },
+          { url: "https://translationalbio.shinyapps.io/brex/", text: "B-rex Interactive Browser", icon: "web" }
+        ]
+      }
+    };
+
+    // Open modal function
+    function openModal(projectId) {
+      const data = projectData[projectId];
+      if (!data) return;
+
+      // Set title and tags
+      document.getElementById('modal-title').textContent = data.title;
+      
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = data.tags.map(tag => `<span>${tag}</span>`).join('');
+
+      // Build modal body
+      let bodyHTML = '';
+
+      // Check if project uses Challenge → Approach → Impact format (for B-ALL)
+      if (data.challenge && data.approach && data.impact) {
+        bodyHTML += `
+          <div class="modal-section">
+            <h3>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              Project Story
+            </h3>
+            <p style="margin-bottom: 1rem;">${data.challenge}</p>
+            <p style="margin-bottom: 1rem;">${data.approach}</p>
+            <p>${data.impact}</p>
+          </div>
+        `;
+      } else if (data.overview) {
+        // Traditional overview section for other projects
+        bodyHTML += `
+          <div class="modal-section">
+            <h3>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              Overview
+            </h3>
+            <p>${data.overview}</p>
+          </div>
+        `;
+      }
+
+      // Technologies section
+      bodyHTML += `
+        <div class="modal-section">
+          <h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/></svg>
+            Technologies Used
+          </h3>
+          <div class="modal-tech-grid">
+            ${data.technologies.map(tech => `
+              <div class="modal-tech-item">
+                <strong>${tech.name}</strong>
+                <span>${tech.detail}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      // Results section
+      bodyHTML += `
+        <div class="modal-section">
+          <h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Key Results
+          </h3>
+          <ul>
+            ${data.results.map(result => `<li>${result}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+
+      // Figures section
+      if (data.figures && data.figures.length > 0) {
+        bodyHTML += `
+          <div class="modal-section">
+            <h3>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+              Visualizations
+            </h3>
+            <div class="modal-figures-grid">
+              ${data.figures.map(fig => `
+                <figure class="modal-figure">
+                  <img src="${fig.src}" alt="${fig.caption}">
+                  <figcaption>${fig.caption}</figcaption>
+                </figure>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // Links section
+      bodyHTML += `
+        <div class="modal-section">
+          <h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            Links & Resources
+          </h3>
+          <div class="modal-links">
+            ${data.links.map(link => `
+              <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="modal-link ${link.primary ? '' : 'secondary'}">
+                ${getIconSVG(link.icon)}
+                ${link.text}
+              </a>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      document.getElementById('modal-body').innerHTML = bodyHTML;
+      document.getElementById('modal-overlay').classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    // Close modal function
+    function closeModal(event) {
+      if (event && event.target !== event.currentTarget && event.type === 'click') return;
+      document.getElementById('modal-overlay').classList.remove('active');
+      document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Helper function to get icon SVG
+    function getIconSVG(iconName) {
+      const icons = {
+        github: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>',
+        web: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+        paper: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>'
+      };
+      return icons[iconName] || icons.web;
+    }
+
     // Copy email function for hero section
     function copyEmail() {
       const email = "qp241615@qmul.ac.uk";

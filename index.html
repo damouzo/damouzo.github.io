@@ -86,7 +86,7 @@
 
     /* Sections */
     .section {
-      padding: 8rem 10%;
+      padding: 5rem 10%;
       text-align: center;
     }
     .section-title {
@@ -100,13 +100,14 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: flex-start;
       text-align: left;
       max-width: 800px;
       margin: 0 auto;
-      padding-top: 4rem;
+      padding-top: 12rem;
       padding-bottom: 4rem;
+      position: relative;
     }
     .hero-subtitle {
       color: #f0c46b;
@@ -231,8 +232,75 @@
       width: 20px;
       height: 20px;
     }
+    
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 20rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      color: #555;
+      opacity: 0.6;
+      animation: bounce 2.5s ease-in-out infinite;
+    }
+    
+    .scroll-indicator .mouse {
+      width: 18px;
+      height: 28px;
+      border: 1.5px solid #555;
+      border-radius: 10px;
+      position: relative;
+    }
+    
+    .scroll-indicator .mouse::before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 5px;
+      background: #555;
+      border-radius: 1px;
+      animation: scroll-wheel 2.5s ease-in-out infinite;
+    }
+    
+    .scroll-indicator span {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 300;
+    }
+    
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(-8px);
+      }
+    }
+    
+    @keyframes scroll-wheel {
+      0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+      }
+    }
 
     /* Experience */
+    .experience {
+      padding-top: 2rem;
+    }
+    
     .timeline {
       position: relative;
       max-width: 1200px;
@@ -468,6 +536,113 @@
       height: 16px;
     }
 
+    /* Toolbox Section */
+    .toolbox-container {
+      position: relative;
+      margin-top: 3rem;
+      padding: 3rem 0;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    
+    .toolbox-label {
+      position: absolute;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%) translateX(-70px) rotate(-90deg);
+      transform-origin: center center;
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: normal;
+      color: #f0c46b;
+      white-space: nowrap;
+      z-index: 1;
+    }
+    
+    .toolbox-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 1.5rem 0;
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 30px,
+        black calc(100% - 30px),
+        transparent
+      );
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 30px,
+        black calc(100% - 30px),
+        transparent
+      );
+    }
+    
+    .toolbox-track {
+      display: flex;
+      gap: 2.5rem;
+      animation: scroll 50s linear infinite;
+      width: fit-content;
+      padding-left: 0;
+    }
+    
+    .toolbox-track:hover {
+      animation-play-state: paused;
+    }
+    
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    .toolbox-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 60px;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+    }
+    
+    .toolbox-icon:hover {
+      transform: translateY(-5px) scale(1.08);
+    }
+    
+    .toolbox-icon img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      filter: brightness(0.9);
+      transition: filter 0.3s ease;
+    }
+    
+    .toolbox-icon:hover img {
+      filter: brightness(1.2) drop-shadow(0 0 8px rgba(240, 196, 107, 0.3));
+    }
+    
+    .toolbox-icon span {
+      font-size: 0.8rem;
+      color: #999;
+      font-weight: 500;
+      text-align: center;
+      white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+    
+    .toolbox-icon:hover span {
+      color: #f0c46b;
+    }
+
     /* About */
     .about-intro {
       max-width: 900px;
@@ -560,9 +735,17 @@
       .profile-photo {
         max-width: 220px;
       }
+      
+      .contact {
+        padding-bottom: 10rem !important;
+      }
     }
 
     /* Contact */
+    .contact {
+      padding-bottom: 15rem !important;
+    }
+    
     .contact-heading {
       font-size: 2.5rem;
       line-height: 1.3;
@@ -962,6 +1145,39 @@
         width: 100%;
         justify-content: center;
       }
+      
+      .toolbox-container {
+        margin-top: 3rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      .toolbox-label {
+        font-size: 1.5rem;
+        left: 1rem;
+        transform: translateY(-50%) translateX(-45px) rotate(-90deg);
+      }
+      
+      .toolbox-wrapper {
+        margin-left: 0;
+      }
+      
+      .toolbox-track {
+        gap: 2rem;
+      }
+      
+      .toolbox-icon {
+        min-width: 50px;
+      }
+      
+      .toolbox-icon img {
+        width: 35px;
+        height: 35px;
+      }
+      
+      .toolbox-icon span {
+        font-size: 0.7rem;
+      }
     }
   </style>
 </head>
@@ -1012,6 +1228,11 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
         Copy Mail
       </button>
+    </div>
+    
+    <div class="scroll-indicator">
+      <div class="mouse"></div>
+      <span>Scroll</span>
     </div>
   </section>
 
@@ -1231,6 +1452,146 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
               Paper
             </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Toolbox -->
+    <div class="toolbox-container">
+      <div class="toolbox-label">Toolbox</div>
+      <div class="toolbox-wrapper">
+        <div class="toolbox-track">
+          <!-- Primera ronda de iconos -->
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R">
+            <span>R</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+            <span>Python</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash">
+            <span>Bash</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.simpleicons.org/markdown/white" alt="Markdown">
+            <span>Markdown</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://raw.githubusercontent.com/nextflow-io/trademark/master/nextflow-icon.svg" alt="Nextflow">
+            <span>Nextflow</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://raw.githubusercontent.com/snakemake/snakemake/main/docs/logo-snake.svg" alt="Snakemake">
+            <span>Snakemake</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+            <span>Docker</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://raw.githubusercontent.com/apptainer/apptainer-logos/main/PNG/Apptainer_icon_wht_S.png" alt="Singularity">
+            <span>Singularity</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/anaconda/anaconda-original.svg" alt="Conda">
+            <span>Conda</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
+            <span>Linux</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg" alt="Windows">
+            <span>Windows</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS">
+            <span>AWS</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+            <span>Git</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" style="filter: invert(1);">
+            <span>GitHub</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/shiny.png" alt="Shiny">
+            <span>Shiny</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/notion/notion-original.svg" alt="Notion" style="filter: brightness(10);">
+            <span>Notion</span>
+          </div>
+          
+          <!-- Segunda ronda (duplicados para animación infinita) -->
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R">
+            <span>R</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+            <span>Python</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash">
+            <span>Bash</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.simpleicons.org/markdown/white" alt="Markdown">
+            <span>Markdown</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://raw.githubusercontent.com/nextflow-io/trademark/master/nextflow-icon.svg" alt="Nextflow">
+            <span>Nextflow</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://raw.githubusercontent.com/snakemake/snakemake/main/docs/logo-snake.svg" alt="Snakemake">
+            <span>Snakemake</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+            <span>Docker</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://raw.githubusercontent.com/apptainer/apptainer-logos/main/PNG/Apptainer_icon_wht_S.png" alt="Singularity">
+            <span>Singularity</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/anaconda/anaconda-original.svg" alt="Conda">
+            <span>Conda</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
+            <span>Linux</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg" alt="Windows">
+            <span>Windows</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS">
+            <span>AWS</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+            <span>Git</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" style="filter: invert(1);">
+            <span>GitHub</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/shiny.png" alt="Shiny">
+            <span>Shiny</span>
+          </div>
+          <div class="toolbox-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/notion/notion-original.svg" alt="Notion" style="filter: brightness(10);">
+            <span>Notion</span>
           </div>
         </div>
       </div>

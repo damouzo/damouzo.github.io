@@ -97,7 +97,7 @@
 
     /* Hero */
     .hero {
-      min-height: 100vh;
+      min-height: 85vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -106,7 +106,7 @@
       max-width: 800px;
       margin: 0 auto;
       padding-top: 12rem;
-      padding-bottom: 4rem;
+      padding-bottom: 2rem;
       position: relative;
     }
     .hero-subtitle {
@@ -231,69 +231,6 @@
     .hero-btn svg {
       width: 20px;
       height: 20px;
-    }
-    
-    /* Scroll Indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 20rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.3rem;
-      color: #555;
-      opacity: 0.6;
-      animation: bounce 2.5s ease-in-out infinite;
-    }
-    
-    .scroll-indicator .mouse {
-      width: 18px;
-      height: 28px;
-      border: 1.5px solid #555;
-      border-radius: 10px;
-      position: relative;
-    }
-    
-    .scroll-indicator .mouse::before {
-      content: '';
-      position: absolute;
-      top: 5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 5px;
-      background: #555;
-      border-radius: 1px;
-      animation: scroll-wheel 2.5s ease-in-out infinite;
-    }
-    
-    .scroll-indicator span {
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: 300;
-    }
-    
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateX(-50%) translateY(0);
-      }
-      50% {
-        transform: translateX(-50%) translateY(-8px);
-      }
-    }
-    
-    @keyframes scroll-wheel {
-      0% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-      100% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(10px);
-      }
     }
 
     /* Experience */
@@ -541,21 +478,18 @@
       position: relative;
       margin-top: 3rem;
       padding: 3rem 0;
-      max-width: 1400px;
+      max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
-      padding-left: 2rem;
-      padding-right: 2rem;
     }
     
     .toolbox-label {
       position: absolute;
-      left: 2rem;
+      left: 0;
       top: 50%;
       transform: translateY(-50%) translateX(-70px) rotate(-90deg);
       transform-origin: center center;
       font-size: 2rem;
-      font-weight: 400;
       letter-spacing: normal;
       color: #f0c46b;
       white-space: nowrap;
@@ -1178,6 +1112,22 @@
       .toolbox-icon span {
         font-size: 0.7rem;
       }
+      
+      /* Mobile Hero adjustments */
+      .hero {
+        padding-top: 8rem;
+        padding-bottom: 1rem;
+      }
+      
+      /* Mobile navbar adjustments */
+      .navbar {
+        padding: 0.75rem 1rem;
+      }
+      
+      .navbar ul {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -1229,11 +1179,6 @@
         Copy Mail
       </button>
     </div>
-    
-    <div class="scroll-indicator">
-      <div class="mouse"></div>
-      <span>Scroll</span>
-    </div>
   </section>
 
   <!-- Experience -->
@@ -1277,8 +1222,8 @@
           </div>
         </div>
         <h3 class="experience-title">Gene Therapy Internship</h3>
-        <p>Integrated scMultiome participant data across hospitals for the XPAND gene therapy consortium, 
-          harmonising datasets from different clinical sites.</p>
+        <p>Integrated scMultiome participant data across hospitals for XPAND gene therapy consortium, 
+          harmonising data from different hospitals.</p>
         <p>Validated an optimized LT‑HSC fingerprint in AML patient‑derived cells, confirming its applicability.</p>
       </div>
 

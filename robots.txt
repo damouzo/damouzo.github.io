@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://damouzo.github.io/sitemap.xml

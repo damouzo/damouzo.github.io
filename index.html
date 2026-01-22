@@ -1261,6 +1261,26 @@
   <section id="projects" class="section projects">
     <h2 class="section-title">Projects</h2>
     <div class="project-grid">
+      <div class="project-card" onclick="openModal('scannex')">
+        <img src="images/imgProy/scAnnex.png" alt="scAnnex project illustration" class="project-image">
+        <div class="project-content">
+          <h3>scAnnex</h3>
+          <div class="tags">
+            <span>Nextflow DSL2</span>
+            <span>scRNA-seq</span>
+            <span>Interactive Dashboard</span>
+          </div>
+          <p>Production-grade automated single-cell RNA-seq analysis pipeline. Delivers publication-quality results 
+            from raw counts to annotated clusters in <30 minutes, democratizing advanced analysis for labs without bioinformaticians.</p>
+          <div class="project-links">
+            <a href="https://github.com/damouzo/scAnnex" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      
       <div class="project-card" onclick="openModal('xpand')">
         <img src="images/imgProy/Xpand.jpg" alt="XPAND project illustration" class="project-image">
         <div class="project-content">
@@ -1645,6 +1665,74 @@
   <script>
     // Modal data with demo content
     const projectData = {
+      scannex: {
+        title: "scAnnex - Automated Single-Cell RNA-seq Analysis",
+        tags: ["Nextflow DSL2", "Production Pipeline", "Interactive Dashboard", "scRNA-seq"],
+        
+        // Challenge → Approach → Impact
+        challenge: `<strong>Challenge:</strong> Single-cell RNA-seq analysis requires expertise in computational biology, 
+          proficiency in R/Python, and weeks of manual scripting—creating a barrier for experimental biologists and clinicians 
+          who need rapid insights from their data. Inconsistent preprocessing choices, arbitrary filtering thresholds, and 
+          non-reproducible manual workflows lead to irreproducible results across labs. Core facilities and researchers need 
+          a standardized, automated solution that delivers publication-quality results without coding expertise, while maintaining 
+          flexibility for computational experts to customize parameters.`,
+        
+        approach: `<strong>Approach:</strong> Developed a production-grade Nextflow DSL2 pipeline integrating best-practice 
+          single-cell analysis tools into a unified, automated workflow. Implemented adaptive quality control with quantile-based 
+          filtering, automated doublet detection via Scrublet, batch correction with Harmony, and cell type annotation using 
+          CellTypist's curated models. Created an interactive R Shiny dashboard enabling real-time exploration, manual annotation 
+          refinement, and export of publication-ready figures—all without writing code. Designed modular architecture supporting 
+          multiple input formats (H5AD, 10x MTX, Seurat RDS) and execution environments (local, HPC, cloud).`,
+        
+        impact: `<strong>Impact:</strong> Reduces analysis time from weeks to hours—complete workflow from raw counts to annotated 
+          clusters in <30 minutes for typical 10k-cell datasets. Eliminates computational barriers: biologists launch analyses via 
+          simple command-line interface, explore results through point-and-click dashboard, and export figures directly for manuscripts. 
+          Ensures reproducibility through containerization (Docker/Singularity) and comprehensive provenance tracking. Currently 
+          production-ready and validated across three major input formats, enabling rapid hypothesis testing and democratizing access 
+          to advanced single-cell analysis for labs without dedicated bioinformaticians.`,
+        
+        technologies: [
+          { name: "Nextflow DSL2", detail: "Workflow orchestration" },
+          { name: "Scanpy 1.9+", detail: "scRNA-seq core analysis" },
+          { name: "Scrublet", detail: "Doublet detection" },
+          { name: "CellTypist", detail: "Automated cell annotation" },
+          { name: "Harmony", detail: "Batch integration" },
+          { name: "R Shiny", detail: "Interactive dashboard" },
+          { name: "Plotly", detail: "WebGL-accelerated plots" },
+          { name: "Docker/Singularity", detail: "Containerization" },
+          { name: "Wave", detail: "On-demand containers" },
+          { name: "Conda", detail: "Environment management" }
+        ],
+        
+        results: [
+          "scRNA-seq pipeline across H5AD, 10x MTX, and Seurat RDS formats with 100% success rate",
+          "Adaptive QC filtering with quantile-based thresholds (10th-90th percentile) prevents over-filtering",
+          "Multi-resolution clustering: 5 Leiden resolutions (0.1-0.9) for granularity exploration",
+          "Automated cell type annotation using CellTypist with 30+ pre-trained tissue models",
+          "Interactive dashboard: QC overview, UMAP exploration, gene expression overlay, and annotation station",
+          "Format flexibility: Direct RDS conversion without SeuratDisk (Seurat v5 compatible)",
+          "Five execution profiles: wave, conda, docker, singularity, apptainer for diverse environments",
+          "Memory efficient: 60-75% allocated memory usage to prevent OOM errors",
+          "Resumable workflow: Nextflow caching enables instant restart after failures",
+          "Comprehensive metrics: Cell attrition logs, QC distributions, marker expression reports",
+          "Export capabilities: Save custom annotations to H5AD, export plots as PNG/PDF"
+        ],
+        
+        figures: [
+          {
+            src: "images/imgProy/pop_ups/scAnnex_QCoverview.png",
+            caption: "Quality Control Dashboard: Automated QC metrics visualization showing cell counts, gene distributions, mitochondrial percentages, and filtering thresholds across all samples. Enables rapid assessment of data quality and identification of potential issues before downstream analysis."
+          },
+          {
+            src: "images/imgProy/pop_ups/scAnnex_Annotation_Station.png",
+            caption: "Annotation Station: Rule-based cell type annotation interface combining clustering, CellTypist predictions, and marker expression logic. Users can define custom cell types through point-and-click interface, preview changes in real-time, and save annotations directly to H5AD files—no coding required."
+          }
+        ],
+        
+        links: [
+          { url: "https://github.com/damouzo/scAnnex", text: "GitHub Repository", icon: "github", primary: true }
+        ]
+      },
       xpand: {
         title: "XPAND - HSC Multiomics Characterization",
         tags: ["scMultiome", "scCiteSeq", "BM & mPB", "Gene Therapy"],

@@ -1270,7 +1270,7 @@
             <span>scRNA-seq</span>
             <span>Interactive Dashboard</span>
           </div>
-          <p>Production-grade automated single-cell RNA-seq analysis pipeline. Delivers publication-quality results 
+          <p>Automated single-cell RNA-seq analysis pipeline. Delivers publication-quality results 
             from raw counts to annotated clusters in <30 minutes, democratizing advanced analysis for labs without bioinformaticians.</p>
           <div class="project-links">
             <a href="https://github.com/damouzo/scAnnex" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
@@ -1666,8 +1666,8 @@
     // Modal data with demo content
     const projectData = {
       scannex: {
-        title: "scAnnex - Automated Single-Cell RNA-seq Analysis",
-        tags: ["Nextflow DSL2", "Production Pipeline", "Interactive Dashboard", "scRNA-seq"],
+        title: "scAnnex - Automated scRNA-seq Analysis",
+        tags: ["Nextflow", "Interactive Dashboard", "scRNA-seq"],
         
         // Challenge → Approach → Impact
         challenge: `<strong>Challenge:</strong> Single-cell RNA-seq analysis requires expertise in computational biology, 
@@ -1677,7 +1677,7 @@
           a standardized, automated solution that delivers publication-quality results without coding expertise, while maintaining 
           flexibility for computational experts to customize parameters.`,
         
-        approach: `<strong>Approach:</strong> Developed a production-grade Nextflow DSL2 pipeline integrating best-practice 
+        approach: `<strong>Approach:</strong> Developed a Nextflow  pipeline integrating best-practice 
           single-cell analysis tools into a unified, automated workflow. Implemented adaptive quality control with quantile-based 
           filtering, automated doublet detection via Scrublet, batch correction with Harmony, and cell type annotation using 
           CellTypist's curated models. Created an interactive R Shiny dashboard enabling real-time exploration, manual annotation 
@@ -1692,8 +1692,8 @@
           to advanced single-cell analysis for labs without dedicated bioinformaticians.`,
         
         technologies: [
-          { name: "Nextflow DSL2", detail: "Workflow orchestration" },
-          { name: "Scanpy 1.9+", detail: "scRNA-seq core analysis" },
+          { name: "Nextflow", detail: "Workflow orchestration" },
+          { name: "Scanpy", detail: "scRNA-seq core analysis" },
           { name: "Scrublet", detail: "Doublet detection" },
           { name: "CellTypist", detail: "Automated cell annotation" },
           { name: "Harmony", detail: "Batch integration" },

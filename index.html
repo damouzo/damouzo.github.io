@@ -1170,6 +1170,64 @@
         font-size: 0.9rem;
       }
     }
+
+    /* Metrics Banner */
+    .metrics-banner {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+      padding: 2rem 10%;
+      border-top: 1px solid rgba(240, 196, 107, 0.1);
+      border-bottom: 1px solid rgba(240, 196, 107, 0.1);
+      background: rgba(240, 196, 107, 0.03);
+    }
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 2.5rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .metric-item:last-child {
+      border-right: none;
+    }
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #f0c46b;
+      line-height: 1.1;
+    }
+    .metric-label {
+      font-size: 0.8rem;
+      color: #999;
+      font-weight: 500;
+      margin-top: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .metrics-banner {
+        gap: 0;
+        padding: 1.5rem 5%;
+      }
+      .metric-item {
+        width: 50%;
+        padding: 1rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .metric-item:nth-child(odd) {
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .metric-item:nth-last-child(-n+2) {
+        border-bottom: none;
+      }
+      .metric-value {
+        font-size: 1.6rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1192,7 +1250,7 @@
 
   <!-- Hero Section -->
   <section id="home" class="section hero">
-    <div class="hero-subtitle">Senior Bioinformatician · Data Scientist</div>
+    <div class="hero-subtitle">Senior Bioinformatician · Oncology &amp; Precision Medicine</div>
     <h1>Daniel Mouzo</h1>
     <p class="hero-description">
       Turning complex biological questions into reproducible insights through robust, data-driven workflows
@@ -1228,6 +1286,30 @@
     </div>
   </section>
 
+  <!-- Metrics Banner -->
+  <div class="metrics-banner">
+    <div class="metric-item">
+      <span class="metric-value">7+</span>
+      <span class="metric-label">Years Experience</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-value">4</span>
+      <span class="metric-label">Countries</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-value">10+</span>
+      <span class="metric-label">Publications</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-value">30+</span>
+      <span class="metric-label">Staff Coordinated</span>
+    </div>
+    <div class="metric-item">
+      <span class="metric-value">3</span>
+      <span class="metric-label">Specialized Courses</span>
+    </div>
+  </div>
+
   <!-- Experience -->
   <section id="experience" class="section experience">
     <h2 class="section-title">Experience</h2>
@@ -1235,7 +1317,7 @@
     <div class="timeline">
       <div class="experience-card">
         <div class="experience-header">
-          <img src="images/logosExps/Queen Mary.jpg" alt="Barts Logo" class="logo">
+          <img src="images/logosExps/Queen Mary.jpg" alt="Barts Logo" class="logo" loading="lazy">
           <div class="experience-meta">
             <span class="experience-date">2025 — Present</span>
             <span class="experience-institute">Barts Cancer Institute · Queen Mary University</span>
@@ -1248,7 +1330,7 @@
 
       <div class="experience-card">
         <div class="experience-header">
-          <img src="images/logosExps/Navarrabiomed.jpg" alt="Navarrabiomed Logo" class="logo">
+          <img src="images/logosExps/Navarrabiomed.jpg" alt="Navarrabiomed Logo" class="logo" loading="lazy">
           <div class="experience-meta">
             <span class="experience-date">2021 — 2025</span>
             <span class="experience-institute">Navarrabiomed Biomedical Research Center</span>
@@ -1262,7 +1344,7 @@
 
       <div class="experience-card">
         <div class="experience-header">
-          <img src="images/logosExps/Ospedale San Rafelle.jpg" alt="OSR Logo" class="logo">
+          <img src="images/logosExps/Ospedale San Rafelle.jpg" alt="OSR Logo" class="logo" loading="lazy">
           <div class="experience-meta">
             <span class="experience-date">2025</span>
             <span class="experience-institute">Ospedale San Raffaele · SR-Tiget</span>
@@ -1276,7 +1358,7 @@
 
       <div class="experience-card">
         <div class="experience-header">
-          <img src="images/logosExps/KAUST.jpg" alt="KAUST Logo" class="logo">
+          <img src="images/logosExps/KAUST.jpg" alt="KAUST Logo" class="logo" loading="lazy">
           <div class="experience-meta">
             <span class="experience-date">2023</span>
             <span class="experience-institute">KAUST University</span>
@@ -1291,7 +1373,7 @@
 
       <div class="experience-card">
         <div class="experience-header">
-          <img src="images/logosExps/USC.jpg" alt="USC Logo" class="logo">
+          <img src="images/logosExps/USC.jpg" alt="USC Logo" class="logo" loading="lazy">
           <div class="experience-meta">
             <span class="experience-date">2015 — 2020</span>
             <span class="experience-institute">University of Santiago de Compostela</span>
@@ -1309,7 +1391,7 @@
     <h2 class="section-title">Projects</h2>
     <div class="project-grid">
       <div class="project-card" onclick="openModal('scannex')">
-        <img src="images/imgProy/scAnnex.jpeg" alt="scAnnex project illustration" class="project-image">
+        <img src="images/imgProy/scAnnex.jpeg" alt="scAnnex project illustration" class="project-image" loading="lazy">
         <div class="project-content">
           <h3>scAnnex</h3>
           <div class="tags">
@@ -1333,7 +1415,7 @@
       </div>
       
       <div class="project-card" onclick="openModal('xpand')">
-        <img src="images/imgProy/Xpand.jpg" alt="XPAND project illustration" class="project-image">
+        <img src="images/imgProy/Xpand.jpg" alt="XPAND project illustration" class="project-image" loading="lazy">
         <div class="project-content">
           <h3>XPAND</h3>
           <div class="tags">
@@ -1357,7 +1439,7 @@
       </div>
       
       <div class="project-card" onclick="openModal('rr771')">
-        <img src="images/imgProy/RR771.png" alt="RR771 project illustration" class="project-image">
+        <img src="images/imgProy/RR771.png" alt="RR771 project illustration" class="project-image" loading="lazy">
         <div class="project-content">
           <h3>RR771 - Genomics England</h3>
           <div class="tags">
@@ -1377,7 +1459,7 @@
       </div>
       
       <div class="project-card" onclick="openModal('scnextplot')">
-        <img src="images/imgProy/scNextPlot.png" alt="Open source packages illustration" class="project-image">
+        <img src="images/imgProy/scNextPlot.png" alt="Open source packages illustration" class="project-image" loading="lazy">
         <div class="project-content">
           <h3>scNextPlot - R package</h3>
           <div class="tags">
@@ -1397,7 +1479,7 @@
       </div>
       
       <div class="project-card" onclick="openModal('endocarditis')">
-        <img src="images/imgProy/Endocarditis.jpg" alt="Endocarditis project illustration" class="project-image">
+        <img src="images/imgProy/Endocarditis.jpg" alt="Endocarditis project illustration" class="project-image" loading="lazy">
         <div class="project-content">
           <h3>Endocarditis</h3>
           <div class="tags">
@@ -1421,7 +1503,7 @@
       </div>
       
       <div class="project-card" onclick="openModal('genesetcluster')">
-        <img src="images/imgProy/GeneSetCluster.png" alt="GeneSetCluster project illustration" class="project-image">
+        <img src="images/imgProy/GeneSetCluster.png" alt="GeneSetCluster project illustration" class="project-image" loading="lazy">
         <div class="project-content">
           <h3>GeneSetCluster 2.0</h3>
           <div class="tags">
@@ -1449,7 +1531,7 @@
       </div>
       
       <div class="project-card" onclick="openModal('ball')">
-        <img src="images/imgProy/B-ALL.png" alt="B-ALL regulatory landscape project illustration" class="project-image">
+        <img src="images/imgProy/B-ALL.png" alt="B-ALL regulatory landscape project illustration" class="project-image" loading="lazy">
         <div class="project-content">
           <h3>B-ALL Regulatory Landscape</h3>
           <div class="tags">
@@ -1639,7 +1721,7 @@
     <h2 class="section-title">About Me</h2>
     
     <div class="about-intro">
-      <h3>Hi! I'm Dani</h3>
+      <h3>I'm Daniel</h3>
       <p>I started my career in the wet lab, working with proteomics and discovering how much <span style="color: #f0c46b; font-weight: 500;">biological insight remains hidden inside large-scale datasets</span>. That realization led me to transition into bioinformatics and data science, driven by a simple idea: complex biology deserves solutions that are measurable, scalable, and reproducible.</p>
       
       <p>Today, I develop bioinformatic solutions for biomedical challenges. From multi-omic analysis in gene therapy to variant interpretation in cancer and cloud/HPC optimization. I enjoy collaborating with cross-functional teams, <span style="color: #f0c46b; font-weight: 500;">transforming raw data into actionable insights</span>, and building pipelines that accelerate scientific impact.</p>
@@ -1649,7 +1731,7 @@
     
     <div class="about-content">
       <div class="about-photo-container">
-        <img src="images/DanielFoto.jpg" alt="Daniel Mouzo" class="profile-photo">
+        <img src="images/DanielFoto.jpg" alt="Daniel Mouzo" class="profile-photo" loading="lazy">
       </div>
       
       <div class="about-details">
@@ -1676,8 +1758,8 @@
   <!-- Contact -->
   <section id="contact" class="section contact">
     <h2 class="section-title">Contact</h2>
-    <p class="contact-heading">Have something cool you're working on?</p>
-    <p class="contact-subheading">Let’s build the future of precision medicine together.</p>
+    <p class="contact-heading">Precision medicine requires more than just data,<br>it requires actionable insights.</p>
+    <p class="contact-subheading">Let’s build the future of therapeutic discovery together.</p>
     
     <div class="contact-buttons">
       <a href="mailto:daniel.mouzo@proton.me" class="btn">

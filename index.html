@@ -1589,6 +1589,26 @@
           </div>
         </div>
       </div>
+
+      <div class="project-card" onclick="openModal('bulkannex')">
+        <img src="images/imgProy/bulkAnnex_banner.png" alt="bulkAnnex project illustration" class="project-image" loading="lazy">
+        <div class="project-content">
+          <h3>bulkAnnex</h3>
+          <div class="tags">
+            <span>Nextflow</span>
+            <span>Bulk RNA-seq</span>
+            <span>DESeq2</span>
+            <span>Dashboard</span>
+          </div>
+          <p>End-to-end automated bulk RNA-seq pipeline from counts to insights. Integrates DGE with DESeq2, multi-database GSEA, and a self-contained Shiny dashboard—reproducible and HPC-ready.</p>
+          <div class="project-links">
+            <a href="https://github.com/damouzo/bulkAnnex" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
     
     <!-- Toolbox -->
@@ -2251,6 +2271,67 @@
           { url: "https://github.com/TranslationalBioinformaticsUnit/bcell", text: "GitHub Repository", icon: "github", primary: true },
           { url: "https://www.science.org/doi/10.1126/sciadv.adw3110", text: "Science Advances Paper", icon: "paper" },
           { url: "https://translationalbio.shinyapps.io/brex/", text: "B-rex Interactive Browser", icon: "web" }
+        ]
+      },
+      bulkannex: {
+        title: "bulkAnnex – Automated Bulk RNA-seq Analysis",
+        tags: ["Nextflow", "Bulk RNA-seq", "DESeq2", "GSEA", "Interactive Dashboard"],
+
+        challenge: `<strong>Challenge:</strong> Downstream bulk RNA-seq analysis—spanning quality control, differential gene 
+          expression (DGE), and pathway enrichment—requires integrating a heterogeneous stack of R/Bioconductor tools, 
+          manual scripting, and bespoke parameter tuning. In translational oncology research, where multiple experimental 
+          cohorts mix distinct cell types (e.g., cell lines and primary patient cells), a single shared normalisation 
+          model conflates biological variation with technical artefacts, inflating or masking real signal. Without a 
+          standardised, reproducible, and HPC-compatible solution, turnaround times stretch from days to weeks and 
+          results cannot be consistently shared across clinical and research teams.`,
+
+        approach: `<strong>Approach:</strong> Built bulkAnnex as a Nextflow pipeline that automates every stage from 
+          validated count matrices to publication-ready results. Input validation enforces consistency across samplesheet, 
+          contrasts, and count files before any computation begins. A group-aware normalisation layer (norm_group) runs 
+          independent DESeq2 models per biologically distinct sample group, preventing dispersion estimate contamination 
+          while preserving a unified downstream output structure. DGE is performed per contrast with volcano, MA, and 
+          top-gene heatmap outputs. GSEA spans GO (BP/MF/CC), KEGG, Reactome via clusterProfiler/ReactomePA, and 
+          pathway-level visualisation through PathView—including ridgeplots and TreeDot cross-contrast comparison plots. 
+          All results feed into a self-contained R Shiny dashboard with five interactive tabs, launchable on any machine 
+          with a single bash command. The entire workflow runs inside versioned Docker/Singularity containers and is 
+          pre-configured for SLURM HPC environments.`,
+
+        impact: `<strong>Impact:</strong> Reduces analysis turnaround from days to hours on HPC (SLURM/Apocrita) 
+          or locally via Docker—fully reproducible across environments through containerisation. Group-aware normalisation 
+          removes a systematic source of error in multi-cohort clinical studies, producing cleaner DGE and GSEA results 
+          for manuscripts and regulatory submissions. The interactive Shiny dashboard eliminates the need for ad-hoc 
+          scripting during data exploration: researchers browse volcano plots, query pathway enrichment, and inspect 
+          per-gene expression across contrasts without writing code. Backward-compatible design preserves existing 
+          workflow outputs, enabling adoption in ongoing studies without data re-processing. As a living open-source 
+          tool, bulkAnnex accelerates the translation of transcriptomic findings into actionable biological and 
+          clinical hypotheses across oncology and beyond.`,
+
+        technologies: [
+          { name: "Nextflow", detail: "Workflow orchestration" },
+          { name: "DESeq2", detail: "Normalisation & DGE" },
+          { name: "clusterProfiler", detail: "GO & KEGG GSEA" },
+          { name: "ReactomePA", detail: "Reactome pathway analysis" },
+          { name: "PathView", detail: "Pathway visualisation" },
+          { name: "R Shiny", detail: "Interactive dashboard" },
+          { name: "Docker/Singularity", detail: "Containerisation" },
+          { name: "SLURM / HPC", detail: "HPC job scheduling" },
+          { name: "R ≥ 4.3", detail: "Core analysis language" }
+        ],
+
+        results: [
+          "End-to-end pipeline: input validation → QC → normalisation → DGE → GSEA → dashboard in a single command",
+          "Group-aware normalisation (norm_group): independent DESeq2 models per sample group, eliminating cross-group dispersion contamination",
+          "DGE per contrast: volcano plots, MA plots, and top-gene expression heatmaps generated automatically",
+          "Multi-database GSEA: GO (BP/MF/CC), KEGG, Reactome enrichment + ridgeplots and PathView pathway maps",
+          "TreeDot visualisation: cross-contrast GSEA comparison enabling rapid identification of shared and unique pathways",
+          "Self-contained Shiny dashboard with 5 interactive tabs—launchable locally or on any server with one bash command",
+          "Full HPC support: SLURM profiles (Apocrita) with automatic work-directory management",
+          "Containerised with Docker and Singularity; versioned containers guarantee bit-for-bit reproducibility",
+          "Backward compatible: omitting norm_group replicates previous single-model behaviour with identical output structure"
+        ],
+
+        links: [
+          { url: "https://github.com/damouzo/bulkAnnex", text: "GitHub Repository", icon: "github", primary: true }
         ]
       }
     };

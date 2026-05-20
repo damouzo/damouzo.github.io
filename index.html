@@ -477,13 +477,13 @@
     }
     
     .tags span {
-      background: rgba(240,196,107,0.15);
-      color: #f0c46b;
+      background: rgba(255,255,255,0.05);
+      color: #aaa;
       padding: 0.4rem 0.8rem;
       border-radius: 8px;
       font-size: 0.8rem;
       font-weight: 500;
-      border: 1px solid rgba(240, 196, 107, 0.3);
+      border: 1px solid rgba(255,255,255,0.1);
     }
     
     .project-links {
@@ -498,20 +498,20 @@
       align-items: center;
       gap: 0.4rem;
       padding: 0.5rem 1rem;
-      background: rgba(255,255,255,0.05);
-      color: #ccc;
+      background: rgba(240,196,107,0.15);
+      color: #f0c46b;
       text-decoration: none;
       border-radius: 8px;
       font-size: 0.85rem;
       font-weight: 500;
       transition: all 0.3s;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(240,196,107,0.35);
     }
     
     .project-link:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(255,255,255,0.2);
-      color: #f0c46b;
+      background: rgba(240,196,107,0.28);
+      border-color: rgba(240,196,107,0.6);
+      color: #f5d080;
       transform: translateY(-2px);
     }
     
@@ -1276,7 +1276,7 @@
       <ul>
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Work</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -1426,7 +1426,7 @@
 
   <!-- Projects -->
   <section id="projects" class="section projects">
-    <h2 class="section-title">Selected Work</h2>
+    <h2 class="section-title">Projects</h2>
     <div class="project-grid">
       <!-- Row 1: RR771 · scAnnex · bulkAnnex -->
       <div class="project-card" onclick="openModal('rr771')">
@@ -1455,7 +1455,7 @@
           <div class="tags">
             <span>Single-cell</span>
             <span>Workflow</span>
-            <span>Shiny</span>
+            <span>Dashboard</span>
           </div>
           <p>Automated single-cell workflow that takes raw counts to interpretable results through reproducible analysis and a simple interactive dashboard.</p>
           <div class="project-links">
@@ -1478,7 +1478,7 @@
           <div class="tags">
             <span>Bulk RNA-seq</span>
             <span>Workflow</span>
-            <span>Reporting</span>
+            <span>Dashboard</span>
           </div>
           <p>Reproducible bulk RNA-seq workflow for differential expression, pathway analysis, and self-contained reporting.</p>
           <div class="project-links">
@@ -1500,9 +1500,9 @@
         <div class="project-content">
           <h3>XPAND</h3>
           <div class="tags">
-            <span>Single-cell multiomics</span>
+            <span> SC multiomics</span>
             <span>Gene therapy</span>
-            <span>Translational</span>
+            <span>GRN</span>
           </div>
           <p>Integrated single-cell multiomics analysis for HSC gene therapy, focused on marker discovery and translational interpretation.</p>
           <div class="project-links">
@@ -1570,9 +1570,9 @@
         <div class="project-content">
           <h3>Endocarditis</h3>
           <div class="tags">
-            <span>Dual RNA-seq</span>
+            <span>Dual RNA</span>
             <span>Host-pathogen</span>
-            <span>Translational</span>
+            <span>Cardiology</span>
           </div>
           <p>Dual RNA-seq study of infective endocarditis, profiling host and pathogen responses to understand disease biology from both sides.</p>
           <div class="project-links">
@@ -1881,7 +1881,7 @@
     const projectData = {
       scannex: {
         title: "scAnnex | Automated Single-Cell Workflow",
-        tags: ["Single-cell", "Workflow", "Shiny"],
+        tags: ["Single-cell", "Workflow", "Dasboard"],
         
         // Challenge → Approach → Impact
         challenge: `<strong>Challenge:</strong> Single-cell analysis is powerful, but for many labs it is still too manual. Too much time goes into preprocessing, QC choices, and repeated scripting, which slows delivery and makes results harder to reproduce.`,
@@ -1928,6 +1928,8 @@
           }
         ],
         
+        videoSrc: 'images/video/scAnnex_video_demo.mp4',
+
         links: [
           { url: "https://github.com/damouzo/scAnnex", text: "GitHub Repository", icon: "github", primary: true }
         ]
@@ -2246,9 +2248,22 @@
           "Backward compatible: omitting norm_group replicates previous single-model behaviour with identical output structure"
         ],
 
+        figures: [
+          {
+            src: "images/imgProy/pop_ups/bulkAnnex_QCoverview.png",
+            caption: "Dashboard Overview: Interactive landing tab showing the full experiment at a glance — sample metadata, count distributions, size factors, and PCA/clustering plots. Provides a fast quality check before diving into differential expression results."
+          },
+          {
+            src: "images/imgProy/pop_ups/bulkAnnex_GSEA.png",
+            caption: "GSEA Explorer: Multi-database pathway enrichment tab covering GO (BP/MF/CC), KEGG, and Reactome. Displays ridgeplots, dot plots, and PathView pathway maps for each contrast, enabling rapid biological interpretation across databases in a single view."
+          }
+        ],
+
         links: [
           { url: "https://github.com/damouzo/bulkAnnex", text: "GitHub Repository", icon: "github", primary: true }
-        ]
+        ],
+
+        videoSrc: 'images/video/bulkAnnex_video_demo.mp4'
       },
       biohackathon26: {
         title: "ELN Intelligence Layer | BioHackathon 2026",
@@ -2291,9 +2306,10 @@
           }
         ],
 
+        videoSrc: 'images/video/Biohackathon_video_demo.mp4',
+
         links: [
-          { url: "https://github.com/damouzo/biohackathon26", text: "GitHub Repository", icon: "github", primary: true },
-          { url: "https://github.com/damouzo/biohackathon26/releases/tag/v1.0", text: "Demo Video", icon: "video" }
+          { url: "https://github.com/damouzo/biohackathon26", text: "GitHub Repository", icon: "github", primary: true }
         ]
       }
     };
@@ -2403,6 +2419,12 @@
                 ${link.text}
               </a>
             `).join('')}
+            ${data.videoSrc ? `
+              <button class="modal-link" style="cursor:pointer; border:none;" onclick="openVideoModal('${data.videoSrc}')">
+                ${getIconSVG('video')}
+                Video Demo
+              </button>
+            ` : ''}
           </div>
         </div>
       `;

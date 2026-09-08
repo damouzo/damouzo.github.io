@@ -342,52 +342,80 @@
       left: 50%;
       transform: translateX(-50%);
       width: 2px;
+      height: var(--tl-last, 100%);
+      background: rgba(240, 196, 107, 0.15);
+      top: 0;
+    }
+    .timeline::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) scaleY(var(--tl-progress, 0));
+      transform-origin: top center;
+      width: 2px;
       height: 100%;
-      background: rgba(240, 196, 107, 0.3);
+      background: #f0c46b;
+      box-shadow: 0 0 10px rgba(240, 196, 107, 0.45);
       top: 0;
     }
     
+    .timeline-entry {
+      position: relative;
+      display: flex;
+      margin-bottom: 48px;
+      min-height: 48px;
+    }
+    
+    .timeline-entry:last-child {
+      margin-bottom: 0;
+    }
+    
+    .timeline-entry.left .experience-card {
+      margin-right: auto;
+    }
+    
+    .timeline-entry.right .experience-card {
+      margin-left: auto;
+    }
+    
     .experience-card {
-      width: 45%;
+      position: relative;
+      width: calc(50% - 50px);
       background: rgba(255,255,255,0.05);
       backdrop-filter: blur(10px);
       border-radius: 15px;
       padding: 2rem;
+      box-sizing: border-box;
       text-align: left;
-      position: relative;
-      margin-bottom: 3rem;
+      opacity: 1;
     }
     
-    /* Alternate cards left and right */
-    .experience-card:nth-child(odd) {
-      margin-left: 0;
-      margin-right: auto;
+    /* Cards start hidden (opacity 0); the open state is applied inline by
+       JS — driven by scroll progress, fast, not timed. */
+    .timeline.tl-anim .experience-card {
+      opacity: 0;
     }
     
-    .experience-card:nth-child(even) {
-      margin-left: auto;
-      margin-right: 0;
-    }
-    
-    /* Timeline dot marker */
-    .experience-card::before {
-      content: '';
+    /* Timeline dots: checkpoints on the golden line, off until reached */
+    .timeline-dot {
       position: absolute;
+      left: 50%;
+      top: 8px;
       width: 16px;
       height: 16px;
-      background: #f0c46b;
-      border: 3px solid #1b1524;
+      background: #0f0b13;
+      border: 2px solid rgba(255, 255, 255, 0.18);
       border-radius: 50%;
-      top: 2rem;
-      z-index: 1;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      pointer-events: none;
+      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
     }
-    
-    .experience-card:nth-child(odd)::before {
-      right: -56px;
-    }
-    
-    .experience-card:nth-child(even)::before {
-      left: -56px;
+    .timeline-entry.lit .timeline-dot {
+      background: #f0c46b;
+      border-color: #f0c46b;
+      box-shadow: 0 0 14px 2px rgba(240, 196, 107, 0.5);
+      transform: translate(-50%, -50%) scale(1.25);
     }
     
     .experience-header {
@@ -442,18 +470,19 @@
     
     /* Responsive */
     @media (max-width: 768px) {
-      .timeline::before {
+      .timeline::before, .timeline::after {
         left: 20px;
       }
       
-      .experience-card {
-        width: auto;
-        margin-left: 45px !important;
-        margin-right: 0.75rem !important;
+      .timeline-entry.left .experience-card,
+      .timeline-entry.right .experience-card {
+        width: calc(100% - 55px);
+        margin-left: 55px;
+        margin-right: 0;
       }
       
-      .experience-card::before {
-        left: -41px !important;
+      .timeline-dot {
+        left: 20px;
       }
     }
 
@@ -1422,7 +1451,9 @@
     <h2 class="section-title">Experience</h2>
 
     <div class="timeline">
-      <div class="experience-card">
+      <div class="timeline-entry left">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <div class="experience-card">
         <div class="experience-header">
           <img src="images/logosExps/Queen Mary.jpg" alt="Barts Logo" class="logo" loading="lazy">
           <div class="experience-meta">
@@ -1433,9 +1464,12 @@
         <h3 class="experience-title">Postdoctoral Bioinformatician</h3>
         <p>Engineered production-grade Nextflow workflows for 20+ TB of Genomics England WGS data within a secure clinical research environment.</p>
         <p>Automated clinical reporting workflows integrating variant calls and participant metadata, reducing turnaround to under 3 hours.</p>
+        </div>
       </div>
 
-      <div class="experience-card">
+      <div class="timeline-entry right">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <div class="experience-card">
         <div class="experience-header">
           <img src="images/logosExps/Navarrabiomed.jpg" alt="Navarrabiomed Logo" class="logo" loading="lazy">
           <div class="experience-meta">
@@ -1447,9 +1481,12 @@
         <p>Led bioinformatics delivery for a €4M European work package, coordinating 30+ researchers and partner sites across gene therapy and oncology projects.</p>
         <p>Built single-cell and NGS workflows, standardizing QC and cross-site harmonization for translational and clinical-stage studies.</p>
         <p>Administered and optimized a 7-node HPC cluster, supporting reproducible multi-user analysis with 99% compute availability.</p>
+        </div>
       </div>
 
-      <div class="experience-card">
+      <div class="timeline-entry left">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <div class="experience-card">
         <div class="experience-header">
           <img src="images/logosExps/Ospedale San Rafelle.jpg" alt="OSR Logo" class="logo" loading="lazy">
           <div class="experience-meta">
@@ -1460,9 +1497,12 @@
         <h3 class="experience-title">Visiting Scientist · Gene Therapy</h3>
         <p>Harmonized scMultiome datasets across XPAND clinical sites to support cross-centre comparison and downstream translational analysis.</p>
         <p>Validated LT-HSC signatures in AML-derived cells, linking multi-omic profiles to clinically relevant cell-state interpretation.</p>
+        </div>
       </div>
 
-      <div class="experience-card">
+      <div class="timeline-entry right">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <div class="experience-card">
         <div class="experience-header">
           <img src="images/logosExps/KAUST.jpg" alt="KAUST Logo" class="logo" loading="lazy">
           <div class="experience-meta">
@@ -1473,9 +1513,12 @@
         <h3 class="experience-title">Visiting Scientist · Workflow &amp; Data Systems</h3>
         <p>Designed Snakemake preprocessing workflows for large-scale NGS datasets, reducing turnaround time and standardizing execution.</p>
         <p>Built relational databases to centralize experimental metadata and strengthen data integrity across collaborative projects.</p>
+        </div>
       </div>
 
-      <div class="experience-card">
+      <div class="timeline-entry left">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <div class="experience-card">
         <div class="experience-header">
           <img src="images/logosExps/USC.jpg" alt="USC Logo" class="logo" loading="lazy">
           <div class="experience-meta">
@@ -1486,6 +1529,7 @@
         <h3 class="experience-title">Research Assistant &amp; PhD Candidate</h3>
         <p>Optimized LC-MS and quantitative proteomics workflows, reducing turnaround time by 1.5 days and increasing sample throughput.</p>
         <p>Developed traceability analytics for industrial quality control, translating experimental data into cost-saving decisions.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -2611,11 +2655,72 @@
     window.addEventListener('load', () => {
       const activeLink = document.querySelector('.navbar a.active');
       if (activeLink) moveIndicator(activeLink);
+      updateTimeline();
     });
     window.addEventListener('resize', () => {
       const activeLink = document.querySelector('.navbar a.active');
       if (activeLink) moveIndicator(activeLink);
+      updateTimeline();
     });
+
+    // Timeline draw-on-scroll: the golden line is tied to scroll position
+    // (read head at 55% of the viewport). It physically cannot grow past the
+    // last dot. Each entry flips to .lit — once — when the line head reaches
+    // its dot; the card reveal is a fixed CSS transition, not a scroll-fraction
+    // animation, so a card never peeks before its point is connected. Cards
+    // also stay revealed when scrolling up.
+    const timelineEl = document.querySelector('.timeline');
+    let tlEntries = [];
+    if (timelineEl) {
+      timelineEl.classList.add('tl-anim');
+      timelineEl.style.setProperty('--tl-progress', '0');
+      tlEntries = Array.from(timelineEl.querySelectorAll('.timeline-entry'));
+    }
+
+    function updateTimeline() {
+      if (!timelineEl) return;
+      const rect = timelineEl.getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      // "Read head" fixed at 2/3 of the viewport height: the point of the
+      // golden line stays in the first lower third of the screen.
+      const readHead = vh * (4 / 5);
+      const rawPixels = readHead - rect.top;
+
+      // Position in pixels of the LAST dot inside the timeline: the line must
+      // never grow beyond this value, no matter how much the user scrolls.
+      const dots = tlEntries.map(e => e.querySelector('.timeline-dot'));
+      const lastDot = dots[dots.length - 1];
+      const lastDotOffset = lastDot
+        ? lastDot.getBoundingClientRect().top - rect.top
+        : rect.height;
+      // The golden line never grows past the last dot...
+      timelineEl.style.setProperty('--tl-last', lastDotOffset + 'px');
+      const linePixels = Math.max(0, Math.min(rawPixels, lastDotOffset));
+      const scaleY = linePixels / rect.height;
+      timelineEl.style.setProperty('--tl-progress', scaleY);
+
+      // ...but cards keep fading over a short extra range so the last one
+      // can reach full opacity.
+      const revealRange = 80; // px of scroll to fully show a card
+      const progressPixels = Math.max(0, Math.min(rawPixels, lastDotOffset + revealRange));
+
+      // Toggle each dot/card based on the line head position. Cards fade in
+      // via opacity, driven purely by scroll — and reverse when scrolling up.
+      // No timers.
+      tlEntries.forEach((entry, i) => {
+        const dotOffset = dots[i].getBoundingClientRect().top - rect.top;
+        const lit = progressPixels >= dotOffset;
+        entry.classList.toggle('lit', lit);
+        const card = entry.querySelector('.experience-card');
+        if (card) {
+          const p = Math.max(0, Math.min(1, (progressPixels - dotOffset) / revealRange));
+          card.style.opacity = String(p);
+        }
+      });
+    }
+
+    updateTimeline();
 
     window.addEventListener("scroll", () => {
       // Fade banner
@@ -2626,6 +2731,9 @@
           banner.classList.remove('hidden');
         }
       }
+
+      // Timeline draw-on-scroll
+      updateTimeline();
 
       // Navbar highlight
       let current = "";

@@ -168,6 +168,29 @@
       margin: 0;
       line-height: 1.2;
     }
+    .hero-title-row {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .hero-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #ccc;
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .hero-location::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 6px rgba(74, 222, 128, 0.6);
+    }
     .hero-description {
       font-size: 1.3rem;
       line-height: 1.6;
@@ -1286,7 +1309,10 @@
   <!-- Hero Section -->
   <section id="home" class="section hero">
     <div class="hero-subtitle">Senior Bioinformatician | Multi-Omics Analysis &amp; Workflow Engineering</div>
-    <h1>Daniel Mouzo</h1>
+    <div class="hero-title-row">
+      <h1>Daniel Mouzo</h1>
+      <p class="hero-location">Vigo, Spain &amp; London, UK · Remote</p>
+    </div>
     <p class="hero-description">
       I work across cancer genomics, gene therapy, proteomics, and single-cell biology, building reproducible workflows that turn complex omics data into clear, useful answers.
     </p>
@@ -1867,7 +1893,7 @@
   <div id="modal-overlay" class="modal-overlay" onclick="closeModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <div class="modal-header">
-        <h2 class="modal-title" id="modal-title">Project Title</h2>
+        <h2 class="modal-title" id="modal-title"></h2>
         <button class="modal-close" onclick="closeModal()">&times;</button>
         <div class="modal-tags" id="modal-tags"></div>
       </div>
@@ -2321,7 +2347,7 @@
       if (!data) return;
 
       // Set title and tags
-      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-title').textContent = data.title || '';
       
       const tagsContainer = document.getElementById('modal-tags');
       tagsContainer.innerHTML = data.tags.map(tag => `<span>${tag}</span>`).join('');

@@ -104,29 +104,49 @@
     .navbar {
       position: fixed;
       width: 100%;
-      top: 0;
+      top: 12px;
       z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(20, 10, 30, 0.5);
       display: flex;
       justify-content: center;
-      padding: 1rem 0;
     }
-    .navbar ul {
-      list-style: none;
+    .bubble-nav {
+      position: relative;
       display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
+      gap: 4px;
+      padding: 6px;
+      background: rgba(20, 10, 30, 0.55);
+      border: 1px solid rgba(240, 196, 107, 0.15);
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
     }
-    .navbar a {
+    .bubble-nav a {
+      position: relative;
+      z-index: 2;
+      padding: 8px 18px;
+      border-radius: 999px;
       color: #ccc;
       text-decoration: none;
       font-weight: 500;
+      white-space: nowrap;
       transition: color 0.3s;
     }
-    .navbar a:hover, .navbar a.active {
+    .bubble-nav a:hover {
       color: #f0c46b;
+    }
+    .bubble-nav a.active {
+      color: #1b1524;
+    }
+    .bubble-indicator {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      height: calc(100% - 12px);
+      background: #f0c46b;
+      border-radius: 999px;
+      z-index: 1;
+      transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1), width 0.35s cubic-bezier(0.65, 0, 0.35, 1);
     }
 
     /* Sections */
@@ -1197,28 +1217,30 @@
       
       /* Mobile navbar adjustments */
       .navbar {
-        padding: 0.75rem 1rem;
+        top: 8px;
       }
       
-      .navbar ul {
-        gap: 1rem;
-        font-size: 0.9rem;
+      .bubble-nav {
+        gap: 3px;
+        padding: 5px;
+      }
+      
+      .bubble-nav a {
+        padding: 6px 10px;
+        font-size: 0.8rem;
       }
     }
 
     /* Metrics Banner */
     .metrics-banner {
       position: fixed;
-      bottom: 0;
+      bottom: 12px;
       left: 0;
       right: 0;
       z-index: 9;
       display: flex;
       justify-content: center;
       padding: 0;
-      border-top: 1px solid rgba(240, 196, 107, 0.15);
-      background: rgba(15, 11, 19, 0.85);
-      backdrop-filter: blur(12px);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
     .metrics-banner.hidden {
@@ -1230,14 +1252,21 @@
       display: flex;
       justify-content: center;
       flex-wrap: nowrap;
-      width: 100%;
+      width: fit-content;
       max-width: 900px;
+      background: rgba(15, 11, 19, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(240, 196, 107, 0.15);
+      border-radius: 999px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
     }
     .metric-item {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 0.8rem 0;
+      padding: 0.6rem 1.2rem;
       flex: 1;
       border-right: 1px solid rgba(255, 255, 255, 0.08);
     }
@@ -1245,7 +1274,7 @@
       border-right: none;
     }
     .metric-value {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: #f0c46b;
       line-height: 1.1;
@@ -1254,7 +1283,12 @@
       font-size: 0.7rem;
       color: #999;
       font-weight: 500;
-      margin-top: 0.3rem;
+      margin-top: 0.25rem;
+      line-height: 1.2;
+      height: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       text-align: center;
@@ -1262,13 +1296,18 @@
     @media (max-width: 600px) {
       .metrics-inner {
         flex-wrap: wrap;
+        width: calc(100vw - 2.5rem);
+        max-width: none;
       }
       .metric-item {
         width: 33.33%;
         flex: none;
-        padding: 0.6rem 0;
+        padding: 0.6rem 0.5rem;
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .metric-item:last-child {
+        border-bottom: none;
       }
       .metric-item:nth-child(3n) {
         border-right: none;
@@ -1280,10 +1319,12 @@
         border-right: none;
       }
       .metric-value {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
       }
       .metric-label {
         font-size: 0.65rem;
+        line-height: 1.2;
+        height: 1.3rem;
       }
     }
   </style>
@@ -1295,14 +1336,13 @@
 
   <!-- Navbar -->
   <header class="navbar">
-    <nav>
-      <ul>
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <nav class="bubble-nav" id="bubbleNav">
+      <div class="bubble-indicator" id="bubbleIndicator"></div>
+      <a href="#home" class="active">Home</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
@@ -2543,6 +2583,39 @@
     // Navbar highlight on scroll
     const sections = document.querySelectorAll(".section");
     const navLinks = document.querySelectorAll(".navbar a");
+    const bubbleIndicator = document.getElementById('bubbleIndicator');
+    let lastSection = '';
+
+    function moveIndicator(link) {
+      if (!link || !bubbleIndicator) return;
+      bubbleIndicator.style.width = link.offsetWidth + 'px';
+      bubbleIndicator.style.transform = `translateX(${link.offsetLeft - 6}px)`;
+    }
+
+    function setActiveLink(sectionId) {
+      navLinks.forEach((link) => {
+        const isActive = link.getAttribute('href') === '#' + sectionId;
+        link.classList.toggle('active', isActive);
+        if (isActive) moveIndicator(link);
+      });
+    }
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        const id = link.getAttribute('href').replace('#', '');
+        lastSection = id;
+        setActiveLink(id);
+      });
+    });
+
+    window.addEventListener('load', () => {
+      const activeLink = document.querySelector('.navbar a.active');
+      if (activeLink) moveIndicator(activeLink);
+    });
+    window.addEventListener('resize', () => {
+      const activeLink = document.querySelector('.navbar a.active');
+      if (activeLink) moveIndicator(activeLink);
+    });
 
     window.addEventListener("scroll", () => {
       // Fade banner
@@ -2560,10 +2633,10 @@
         const sectionTop = section.offsetTop - 100;
         if (pageYOffset >= sectionTop) current = section.getAttribute("id");
       });
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) link.classList.add("active");
-      });
+      if (current && current !== lastSection) {
+        lastSection = current;
+        setActiveLink(current);
+      }
     });
 
     // Particles.js configuration (NASA style)

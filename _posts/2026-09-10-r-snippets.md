@@ -1,6 +1,6 @@
 ---
-title: "Snippets: the RStudio feature that save time and reduce errors"
-date: 2026-09-17
+title: "Snippets: the RStudio feature that saves time and reduces errors"
+date: 2026-09-10
 tags: [tips-and-tricks, r]
 excerpt: "RStudio lets you save your own code snippets."
 description: "RStudio's built-in snippet editor lets you save your most-used ggplot templates, color palettes, and reference paths, and expand them with a few keystrokes. A quick look at a feature that's been there the whole time."

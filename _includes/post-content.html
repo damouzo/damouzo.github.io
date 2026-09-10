@@ -5,6 +5,15 @@
   <div class="post-tags">
     {% for tag in post.tags %}<span class="tag-badge">{{ tag }}</span>{% endfor %}
   </div>
+
+  {% if include.show_nav %}
+  <button type="button" class="share-btn"
+          data-share-url="{{ post.url | absolute_url }}"
+          data-share-title="{{ post.title | escape }}">
+    Share
+  </button>
+  {% endif %}
+
   <div class="post-body">
     {{ post.content }}
   </div>

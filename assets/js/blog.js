@@ -87,4 +87,44 @@ document.addEventListener('DOMContentLoaded', () => {
       if (firstVisibleUrl) loadPost(firstVisibleUrl);
     });
   });
+
+  // Share button: native Web Share API where available (mobile), with a
+  // clipboard fallback on desktop. Delegated on the document so it keeps
+  // working after a fetch swaps the main panel.
+  document.addEventListener('click', async (e) => {
+    const btn = e.target.closest('.share-btn');
+    if (!btn) return;
+
+    const url = btn.dataset.shareUrl;
+    const title = btn.dataset.shareTitle || '';
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+      } catch (err) {
+        // User dismissed the native share sheet without choosing — no-op.
+      }
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(url);
+      showShareToast(btn, 'Link copied');
+      btn.classList.add('copied');
+      setTimeout(() => btn.classList.remove('copied'), 2000);
+    } catch (err) {
+      // Last resort: show the URL so it can be copied by hand.
+      showShareToast(btn, url);
+    }
+  });
 });
+
+function showShareToast(btn, message) {
+  const container = btn.closest('.post-content') || document.body;
+  container.querySelectorAll('.share-toast').forEach(t => t.remove());
+  const toast = document.createElement('span');
+  toast.className = 'share-toast';
+  toast.textContent = message;
+  btn.after(toast);
+  setTimeout(() => toast.remove(), 2000);
+}

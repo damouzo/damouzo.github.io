@@ -3,7 +3,8 @@ layout: post
 title: "Welcome to the blog: how this section works"
 date: 2026-09-10
 tags: [nextflow, tips-and-tricks]
-excerpt: "A minimal example post to test how the layout, the tags, and the navigation between posts work."
+excerpt: "An example post to test the layout, tags, and post navigation."
+description: "A minimal example post to test how the master-detail layout, the tag filters, and the navigation between posts work on this blog, and how each post gets its own shareable URL for LinkedIn and elsewhere."
 ---
 
 This is a test post to check that the blog system behaves as expected: it shows up in the list on the left, opens without a full page reload, and its URL (`/blog/welcome-to-the-blog/`) can be shared directly on LinkedIn with its own title and description.

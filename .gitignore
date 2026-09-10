@@ -1,12 +1,14 @@
-# Sistema operativo
+# OS
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# Editores e IDEs
+# Editor and IDEs
 .vscode/*
+.kilo/
 
-# Archivos temporales
+
+# Temporal 
 *.tmp
 *.bak
 *.log

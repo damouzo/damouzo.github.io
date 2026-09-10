@@ -231,6 +231,40 @@ body {
   padding: 0.2rem 0.6rem;
 }
 
+/* Share button + toast */
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font: inherit;
+  font-size: 0.82rem;
+  background: transparent;
+  border: 1px solid rgba(240, 196, 107, 0.35);
+  color: #f0c46b;
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 1.75rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.share-btn:hover {
+  background: rgba(240, 196, 107, 0.12);
+  border-color: rgba(240, 196, 107, 0.6);
+  color: #f5d080;
+}
+.share-btn.copied {
+  background: rgba(74, 222, 128, 0.12);
+  border-color: rgba(74, 222, 128, 0.4);
+  color: #4ade80;
+}
+
+.share-toast {
+  margin-left: 10px;
+  font-size: 0.78rem;
+  color: #999;
+  opacity: 0.8;
+}
+
 .post-body {
   color: #d3d0c9;
   font-size: 1.05rem;

@@ -1,0 +1,308 @@
+/* ------------------------------------------------------------------
+   Blog section — palette matches the main site
+   (dark purple gradient #0f0b13 -> #241627, amber accent #f0c46b)
+------------------------------------------------------------------- */
+
+/* Page base (index.html carries the same rules inline) */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #0f0b13, #241627);
+  background-attachment: fixed;
+  color: #e5e5e5;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Navbar — same bubble style used on the homepage */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 12px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+.blog-nav {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  padding: 6px;
+  background: rgba(20, 10, 30, 0.55);
+  border: 1px solid rgba(240, 196, 107, 0.15);
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+.blog-nav a {
+  padding: 8px 18px;
+  border-radius: 999px;
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.3s, background 0.3s;
+}
+.blog-nav a:hover {
+  color: #f0c46b;
+}
+.blog-nav a.active {
+  color: #1b1524;
+  background: #f0c46b;
+}
+
+/* Layout: sidebar + reading panel */
+.blog-container {
+  padding-top: 9rem; /* clear the fixed navbar */
+}
+
+.blog-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  align-items: start;
+}
+
+/* Sidebar */
+.blog-sidebar {
+  position: sticky;
+  top: 6rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(240, 196, 107, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  font: inherit;
+  font-size: 0.8rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.tag-pill:hover {
+  color: #f0c46b;
+  border-color: rgba(240, 196, 107, 0.4);
+}
+.tag-pill.active {
+  background: rgba(240, 196, 107, 0.15);
+  border-color: rgba(240, 196, 107, 0.6);
+  color: #f0c46b;
+}
+.tag-count {
+  opacity: 0.6;
+  font-size: 0.7rem;
+}
+
+.blog-post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.post-list-item {
+  display: block;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.25s, border-color 0.25s;
+}
+.post-list-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.post-list-item.active {
+  background: rgba(240, 196, 107, 0.12);
+  border-color: rgba(240, 196, 107, 0.25);
+}
+.post-list-item time {
+  font-size: 0.72rem;
+  color: #999;
+}
+.post-list-item h3 {
+  margin: 0.25rem 0 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e5e5e5;
+}
+.post-list-item p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #999;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.post-list-item.hidden {
+  display: none;
+}
+
+/* Main panel: open post */
+.blog-main {
+  min-width: 0;
+}
+
+.post-content .post-meta {
+  color: #999;
+  font-size: 0.85rem;
+  margin: 0 0 0.4rem;
+}
+.post-content h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  line-height: 1.25;
+  color: #e5e5e5;
+}
+.post-content .post-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 0 1.75rem;
+}
+.post-content .tag-badge {
+  font-size: 0.72rem;
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+}
+
+.post-body {
+  color: #d3d0c9;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+.post-body p {
+  margin: 0 0 1.15em;
+}
+.post-body h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #e5e5e5;
+  margin: 1.7em 0 0.6em;
+}
+.post-body h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #e5e5e5;
+  margin: 1.5em 0 0.6em;
+}
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1em;
+  padding-left: 1.5em;
+}
+.post-body li {
+  margin: 0.25em 0;
+}
+.post-body a {
+  color: #f0c46b;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(240, 196, 107, 0.35);
+}
+.post-body a:hover {
+  color: #f5d080;
+}
+.post-body blockquote {
+  border-left: 3px solid rgba(240, 196, 107, 0.4);
+  margin: 0 0 1.2em;
+  padding: 0.2em 1em;
+  color: #c9c4bc;
+  font-style: italic;
+}
+.post-body hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin: 2.5rem auto;
+  width: 60px;
+}
+.post-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.post-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.88em;
+  color: #f0c46b;
+}
+.post-body pre {
+  background: rgba(20, 10, 30, 0.7);
+  border: 1px solid rgba(240, 196, 107, 0.15);
+  border-radius: 10px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.post-body pre code {
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: #d3d0c9;
+}
+
+/* Responsive: single column on small screens */
+@media (max-width: 860px) {
+  .blog-container {
+    padding-top: 7rem;
+  }
+
+  .blog-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-sidebar {
+    position: static;
+  }
+
+  .blog-post-list {
+    max-height: none;
+  }
+}

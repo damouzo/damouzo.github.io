@@ -1,0 +1,19 @@
+title: Daniel Mouzo
+description: Portfolio and blog of Daniel Mouzo, a senior bioinformatician working across cancer genomics, gene therapy, single-cell multiomics, and workflow engineering.
+url: "https://damouzo.github.io"
+baseurl: ""
+
+markdown: kramdown
+permalink: /blog/:slug/
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      image: "/images/socialCard.png"

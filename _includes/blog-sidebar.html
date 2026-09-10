@@ -1,0 +1,37 @@
+<aside class="blog-sidebar">
+  <nav class="blog-tags" aria-label="Filter posts by tag">
+    <button type="button" class="tag-pill active" data-tag="">
+      All <span class="tag-count">{{ site.posts.size }}</span>
+    </button>
+    {% assign sorted_tags = site.tags | sort %}
+    {% for tag in sorted_tags %}
+      <button type="button" class="tag-pill" data-tag="{{ tag[0] | slugify }}">
+        {{ tag[0] }} <span class="tag-count">{{ tag[1].size }}</span>
+      </button>
+    {% endfor %}
+  </nav>
+
+  <ul class="blog-post-list">
+    {% for post in site.posts %}
+      {% assign tag_slugs = "" %}
+      {% for t in post.tags %}
+        {% assign tag_slug = t | slugify %}
+        {% assign tag_slugs = tag_slugs | append: tag_slug | append: "," %}
+      {% endfor %}
+      {% assign is_active = false %}
+      {% if post.url == page.url %}{% assign is_active = true %}{% endif %}
+      {% if page.url == '/blog/' and forloop.first %}{% assign is_active = true %}{% endif %}
+      <li>
+        <a href="{{ post.url | relative_url }}"
+           class="post-list-item{% if is_active %} active{% endif %}"
+           data-post-url="{{ post.url | relative_url }}"
+           data-tags="{{ tag_slugs }}"
+           aria-current="{% if is_active %}true{% else %}false{% endif %}">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt | strip_html | truncate: 110 }}</p>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</aside>

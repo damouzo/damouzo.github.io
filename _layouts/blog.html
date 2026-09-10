@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<div class="blog-container">
+  <div class="blog-layout">
+    {% include blog-sidebar.html %}
+    <main class="blog-main" id="blog-main">
+      {{ content }}
+    </main>
+  </div>
+</div>
+<script src="{{ '/assets/js/blog.js' | relative_url }}" defer></script>

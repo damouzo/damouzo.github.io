@@ -10,3 +10,10 @@ desktop.ini
 *.tmp
 *.bak
 *.log
+
+# Jekyll build output (generated locally, not committed)
+_site/
+.jekyll-cache/
+.sass-cache/
+vendor/
+.bundle/

@@ -9,3 +9,50 @@
     {{ post.content }}
   </div>
 </article>
+
+{% if include.show_nav %}
+<nav class="post-nav" aria-label="Post navigation">
+  {% assign seen_current = false %}
+  {% assign newer_post = nil %}
+  {% assign older_post = nil %}
+  {% for p in site.posts %}
+    {% if p.url == post.url %}
+      {% assign seen_current = true %}
+    {% elsif seen_current %}
+      {% if older_post == nil %}{% assign older_post = p %}{% endif %}
+    {% else %}
+      {% assign newer_post = p %}
+    {% endif %}
+  {% endfor %}
+
+  <div class="post-nav--pager">
+    {% if newer_post %}
+      <a class="post-nav--link post-nav--newer" href="{{ newer_post.url | relative_url }}">← {{ newer_post.title }}</a>
+    {% endif %}
+    {% if older_post %}
+      <a class="post-nav--link post-nav--older" href="{{ older_post.url | relative_url }}">{{ older_post.title }} →</a>
+    {% endif %}
+  </div>
+
+  {% assign related_count = 0 %}
+  {% for candidate in site.posts %}
+    {% if candidate.url != post.url and related_count < 3 %}
+      {% assign is_related = false %}
+      {% for ct in candidate.tags %}
+        {% if post.tags contains ct %}{% assign is_related = true %}{% endif %}
+      {% endfor %}
+      {% if is_related %}
+        {% assign related_count = related_count | plus: 1 %}
+        {% if related_count == 1 %}
+          <h2 class="post-nav--related-title">Related posts</h2>
+          <ul class="post-nav--related">
+        {% endif %}
+        <li><a href="{{ candidate.url | relative_url }}">{{ candidate.title }}</a></li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% if related_count > 0 %}
+        </ul>
+  {% endif %}
+</nav>
+{% endif %}

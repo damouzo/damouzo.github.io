@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const newMain = doc.querySelector('#blog-main');
       if (!newMain) throw new Error('no blog-main content found');
       main.innerHTML = newMain.innerHTML;
+      if (window.hljs) window.hljs.highlightAll();
 
       const newTitle = doc.querySelector('title');
       if (newTitle) document.title = newTitle.textContent;

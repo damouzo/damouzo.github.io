@@ -138,12 +138,26 @@
     .bubble-nav a.active {
       color: #1b1524;
     }
-    .bubble-nav a.nav-blog {
-      color: #f0c46b;
-      border: 1px solid rgba(240, 196, 107, 0.35);
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .bubble-nav a.nav-blog:hover {
+    .nav-pill--blog {
+      padding: 14px 18px;
+      border-radius: 999px;
+      color: #f0c46b;
+      background: rgba(20, 10, 30, 0.55);
+      border: 1px solid rgba(240, 196, 107, 0.35);
+      backdrop-filter: blur(10px);
+      text-decoration: none;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: all 0.3s;
+    }
+    .nav-pill--blog:hover {
       color: #f5d080;
+      background: rgba(240, 196, 107, 0.12);
       border-color: rgba(240, 196, 107, 0.6);
     }
     .bubble-indicator {
@@ -1266,6 +1280,11 @@
         padding: 5px 8px;
         font-size: 0.78rem;
       }
+      
+      .nav-pill--blog {
+        padding: 9px 8px;
+        font-size: 0.78rem;
+      }
     }
 
     /* Metrics Banner */
@@ -1290,7 +1309,7 @@
       justify-content: center;
       flex-wrap: nowrap;
       width: fit-content;
-      max-width: 900px;
+      max-width: 750px;
       background: rgba(15, 11, 19, 0.88);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -1373,15 +1392,17 @@
 
   <!-- Navbar -->
   <header class="navbar">
-    <nav class="bubble-nav" id="bubbleNav">
-      <div class="bubble-indicator" id="bubbleIndicator"></div>
-      <a href="#home" class="active">Home</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="/blog/" class="nav-blog">Blog</a>
-    </nav>
+    <div class="navbar-inner">
+      <nav class="bubble-nav" id="bubbleNav">
+        <div class="bubble-indicator" id="bubbleIndicator"></div>
+        <a href="#home" class="active">Home</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="/blog/" class="nav-pill nav-pill--blog">Blog</a>
+    </div>
   </header>
 
   <!-- Hero Section -->
@@ -1431,10 +1452,6 @@
       <div class="metric-item">
         <span class="metric-value">10+</span>
         <span class="metric-label">Years Experience</span>
-      </div>
-      <div class="metric-item">
-        <span class="metric-value">10+</span>
-        <span class="metric-label">Key Projects</span>
       </div>
       <div class="metric-item">
         <span class="metric-value">4</span>
@@ -2635,7 +2652,7 @@
 
     // Navbar highlight on scroll
     const sections = document.querySelectorAll(".section");
-    const navLinks = document.querySelectorAll(".navbar a");
+    const navLinks = document.querySelectorAll("#bubbleNav a");
     const bubbleIndicator = document.getElementById('bubbleIndicator');
     let lastSection = '';
 
@@ -2662,12 +2679,12 @@
     });
 
     window.addEventListener('load', () => {
-      const activeLink = document.querySelector('.navbar a.active');
+      const activeLink = document.querySelector('#bubbleNav a.active');
       if (activeLink) moveIndicator(activeLink);
       updateTimeline();
     });
     window.addEventListener('resize', () => {
-      const activeLink = document.querySelector('.navbar a.active');
+      const activeLink = document.querySelector('#bubbleNav a.active');
       if (activeLink) moveIndicator(activeLink);
       updateTimeline();
     });

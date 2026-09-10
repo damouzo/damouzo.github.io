@@ -9,6 +9,7 @@ permalink: /blog/:slug/
 plugins:
   - jekyll-seo-tag
   - jekyll-feed
+  - jekyll-sitemap
 
 defaults:
   - scope:

@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/blog.css' | relative_url }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/common.min.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
@@ -17,19 +19,25 @@
   <!-- Particles background (same effect as the main page) -->
   <div id="particles-js"></div>
 
-  <!-- Navbar (same visual language as the bubble nav on the homepage) -->
+  <!-- Navbar: main sections pill + separate Blog pill (same visual language as the homepage) -->
   <header class="navbar">
-    <nav class="bubble-nav blog-nav" aria-label="Main navigation">
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/' | relative_url }}#experience">Experience</a>
-      <a href="{{ '/' | relative_url }}#projects">Projects</a>
-      <a href="{{ '/' | relative_url }}#about">About</a>
-      <a href="{{ '/' | relative_url }}#contact">Contact</a>
-      <a href="{{ '/blog/' | relative_url }}" class="active" aria-current="page">Blog</a>
-    </nav>
+    <div class="navbar-inner">
+      <nav class="bubble-nav blog-nav" aria-label="Main navigation">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/' | relative_url }}#experience">Experience</a>
+        <a href="{{ '/' | relative_url }}#projects">Projects</a>
+        <a href="{{ '/' | relative_url }}#about">About</a>
+        <a href="{{ '/' | relative_url }}#contact">Contact</a>
+      </nav>
+      <a href="{{ '/blog/' | relative_url }}" class="nav-pill nav-pill--blog active" aria-current="page">Blog</a>
+    </div>
   </header>
 
   {{ content }}
+
+  <script>
+    if (window.hljs) hljs.highlightAll();
+  </script>
 
   <script>
     if (typeof particlesJS === 'function' && document.getElementById('particles-js')) {

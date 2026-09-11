@@ -6,9 +6,9 @@
   --dot-gold:  #C9A227;
 }
 
-/* Layer 1 — sharp small dots in scattered micro-constellations per section.
-   No blur, no connecting lines, no big soft halos. Dots stay circular:
-   width == height + border-radius:50%. */
+/* Layer 1 — sharp colored dots in scattered micro-constellations per section.
+   Soft radial edge (same look as the gold blobs) + GPU-smoothed motion.
+   Anchored to the section: scrolls with the text. */
 .fig-layer{
   position: absolute;
   inset: 0;
@@ -20,6 +20,10 @@
   border-radius: 50%;
   opacity: .9;
   pointer-events: none;
+  animation: float-2 14s ease-in-out infinite;
+  /* rasterize once and move as a layer — no per-frame antialiasing jitter */
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 .gstar{
   opacity: 1;
@@ -57,6 +61,7 @@
 
 @media (prefers-reduced-motion: reduce){
   .bg-dot { animation: none; }
+  .gdot { animation: none; }
 }
 
 /* Mobile: no room for the figure dots next to the text */

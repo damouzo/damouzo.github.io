@@ -102,6 +102,7 @@ body {
 
 /* Layout: sidebar + reading panel */
 .blog-container {
+  position: relative;
   padding-top: 9rem; /* clear the fixed navbar */
 }
 
@@ -113,9 +114,9 @@ body {
   margin: 0 auto;
   padding: 0 1.5rem;
   align-items: start;
+  position: relative;
 }
 
-/* Sidebar */
 .blog-sidebar {
   position: sticky;
   top: 6rem;
@@ -127,6 +128,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .blog-tags {

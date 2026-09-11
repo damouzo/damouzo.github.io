@@ -1,0 +1,66 @@
+/* Dot layers — palette from scAnnex/bulkAnnex logos (author-provided) */
+:root{
+  --dot-navy:  #1F3A5F;
+  --dot-teal:  #2D7D6E;
+  --dot-maroon:#A83232;
+  --dot-gold:  #C9A227;
+}
+
+/* Layer 1 — sharp small dots in scattered micro-constellations per section.
+   No blur, no connecting lines, no big soft halos. Dots stay circular:
+   width == height + border-radius:50%. */
+.fig-layer{
+  position: absolute;
+  inset: 0;
+  z-index: 0;                 /* text sits at z-index >= 1 */
+  pointer-events: none;
+}
+.gdot{
+  position: absolute;
+  border-radius: 50%;
+  opacity: .9;
+  pointer-events: none;
+}
+.gstar{
+  opacity: 1;
+}
+
+/* Keep section/sidebar content above the dots (z-index >= 1) */
+.section > :not(.fig-layer):not(.bg-layer),
+.blog-sidebar > :not(.fig-layer):not(.bg-layer) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Layer 2 — blurred circular blobs anchored per section (scroll with text).
+   Never ellipses. */
+.bg-layer{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.bg-dot{
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: .26;
+  pointer-events: none;
+}
+
+@keyframes float-0 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(2px, -6px); } }
+@keyframes float-1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-3px, -4px); } }
+@keyframes float-2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(1px, -8px); } }
+@keyframes float-3 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-2px, -5px); } }
+@keyframes float-4 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(3px, -3px); } }
+@keyframes float-5 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-1px, -7px); } }
+
+@media (prefers-reduced-motion: reduce){
+  .bg-dot { animation: none; }
+}
+
+/* Mobile: no room for the figure dots next to the text */
+@media (max-width: 600px){
+  .fig-layer { display: none; }
+  .bg-layer { display: none; }
+}

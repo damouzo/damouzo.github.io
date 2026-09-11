@@ -13,14 +13,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/blog.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/dots.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/common.min.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('damouzo-theme'); } catch (e) {}
+      document.documentElement.setAttribute('data-theme', t === 'day' ? 'day' : 'night');
+    })();
+  </script>
 </head>
 <body>
 
   <!-- Particles background (same effect as the main page) -->
   <div id="particles-js"></div>
+
+  <button class="theme-toggle" type="button" aria-label="Toggle day/night mode" title="Toggle day/night mode">
+    <svg class="theme-toggle-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 4.5v1.5 2.25M12 19.5v-1.5-2.25M4.5 12h2.25 1.5M19.5 12h-2.25-1.5M6.8 6.8l1.6 1.6M17.2 6.8l-1.6 1.6M6.8 17.2l1.6-1.6M17.2 17.2l-1.6-1.6"/></svg>
+    <svg class="theme-toggle-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12m-5 0a5 5 0 0 1 10 0a5 5 0 0 1-10 0z"/></svg>
+  </button>
 
   <!-- Navbar: main sections pill + separate Blog pill (same visual language as the homepage) -->
   <header class="navbar">
@@ -43,7 +56,12 @@
   </script>
 
   <script>
-    if (typeof particlesJS === 'function' && document.getElementById('particles-js')) {
+    window.__initParticles = function (theme) {
+      var particleColor = theme === 'day' ? '#c9a03c' : '#ffffff';
+      var particlesBox = document.getElementById('particles-js');
+      if (!particlesBox) return;
+      while (particlesBox.firstChild) particlesBox.removeChild(particlesBox.firstChild);
+      if (typeof particlesJS !== 'function') return;
       particlesJS("particles-js", {
         "particles": {
           "number": {
@@ -54,7 +72,7 @@
             }
           },
           "color": {
-            "value": "#ffffff"
+            "value": particleColor
           },
           "shape": {
             "type": "circle",
@@ -89,7 +107,7 @@
           "line_linked": {
             "enable": false,
             "distance": 150,
-            "color": "#ffffff",
+            "color": particleColor,
             "opacity": 0.4,
             "width": 1
           },
@@ -147,10 +165,13 @@
             }
           }
         },
-        "retina_detect": true
-      });
-    }
+          "retina_detect": true
+        });
+    };
+    window.__initParticles(document.documentElement.getAttribute('data-theme') === 'day' ? 'day' : 'night');
   </script>
+
+  <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
 
 </body>
 </html>

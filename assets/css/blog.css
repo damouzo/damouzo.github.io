@@ -16,6 +16,7 @@
       --gold-bg: #f0c46b;
       --gold-bg-deep: #e5b85f;
       --green: #4ade80;
+      --font-display: 'Fraunces', 'Inter', sans-serif;
 
       --nav-bg: rgba(20, 10, 30, 0.55);
       --nav-shadow: rgba(0, 0, 0, 0.35);
@@ -361,6 +362,7 @@ body {
   margin: 0 0 1rem;
   line-height: 1.25;
   color: var(--text);
+  font-family: var(--font-display);
 }
 .post-content .post-tags {
   display: flex;

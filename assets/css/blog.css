@@ -133,6 +133,16 @@
     html[data-theme="night"] .theme-toggle-moon { display: none; }
     html[data-theme="day"] .theme-toggle-sun { display: none; }
 
+    /* Day mode: dotted line framing the floating post selector */
+    .dot-line {
+      display: none;
+      position: relative;
+      height: 18px;
+      margin: 0.5rem 0 0.75rem;
+      pointer-events: none;
+    }
+    html[data-theme="day"] .dot-line { display: block; }
+
 /* Page base (index.html carries the same rules inline) */
 html {
   scroll-behavior: smooth;

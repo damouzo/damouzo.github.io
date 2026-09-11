@@ -3,7 +3,7 @@
 
   function currentTheme() {
     var t = document.documentElement.getAttribute('data-theme');
-    return t === 'day' ? 'day' : 'night';
+    return t === 'night' ? 'night' : 'day';
   }
 
   function applyTheme(theme) {

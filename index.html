@@ -1520,7 +1520,7 @@
     (function () {
       var t = null;
       try { t = localStorage.getItem('damouzo-theme'); } catch (e) {}
-      document.documentElement.setAttribute('data-theme', t === 'day' ? 'day' : 'night');
+      document.documentElement.setAttribute('data-theme', t === 'night' ? 'night' : 'day');
     })();
   </script>
 </head>
@@ -1529,8 +1529,8 @@
   <!-- Particles background -->
   <div id="particles-js"></div>
   <button class="theme-toggle" type="button" aria-label="Toggle day/night mode" title="Toggle day/night mode">
-    <svg class="theme-toggle-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 4.5v1.5 2.25M12 19.5v-1.5-2.25M4.5 12h2.25 1.5M19.5 12h-2.25-1.5M6.8 6.8l1.6 1.6M17.2 6.8l-1.6 1.6M6.8 17.2l1.6-1.6M17.2 17.2l-1.6-1.6"/></svg>
-    <svg class="theme-toggle-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12m-5 0a5 5 0 0 1 10 0a5 5 0 0 1-10 0z"/></svg>
+    <svg class="theme-toggle-sun" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="5"/><rect x="11" y="1" width="2" height="4" rx="1"/><rect x="11" y="19" width="2" height="4" rx="1"/><rect x="1" y="11" width="4" height="2" rx="1"/><rect x="19" y="11" width="4" height="2" rx="1"/><rect x="11" y="1" width="2" height="4" rx="1" transform="rotate(45 12 12)"/><rect x="11" y="19" width="2" height="4" rx="1" transform="rotate(45 12 12)"/><rect x="1" y="11" width="4" height="2" rx="1" transform="rotate(45 12 12)"/><rect x="19" y="11" width="4" height="2" rx="1" transform="rotate(45 12 12)"/></svg>
+    <svg class="theme-toggle-moon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.75 15.002A9.75 9.75 0 0 1 9 2.25a.75.75 0 0 0-.825-.8 11.25 11.25 0 1 0 14.375 14.377.75.75 0 0 0-.8-.825Z"/><path d="M19 1.5a.75.75 0 0 1 .75.75V3.5h1.25a.75.75 0 0 1 0 1.5H19.75v1.25a.75.75 0 0 1-1.5 0V5h-1.25a.75.75 0 0 1 0-1.5h1.25V2.25A.75.75 0 0 1 19 1.5Z"/><path d="M13.5 6.5a.5.5 0 0 1 .5.5v.75h.75a.5.5 0 0 1 0 1H14v.75a.5.5 0 0 1-1 0V8.75h-.75a.5.5 0 0 1 0-1h.75V7a.5.5 0 0 1 .5-.5Z"/></svg>
   </button>
 
   <!-- Navbar -->
@@ -3307,7 +3307,7 @@
           "retina_detect": true
         });
     };
-    window.__initParticles(document.documentElement.getAttribute('data-theme') === 'day' ? 'day' : 'night');
+    window.__initParticles(document.documentElement.getAttribute('data-theme') === 'night' ? 'night' : 'day');
   </script>
 
 <!-- Video Demo Modal -->

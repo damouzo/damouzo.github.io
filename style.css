@@ -1,9 +1,22 @@
+:root {
+  --cream: #faf7f2;
+  --ink: #2c2723;
+  --text: #3d3731;
+  --text-2: #6d655c;
+  --text-3: #978e82;
+  --gold: #966a12;
+  --gold-soft: #cfa450;
+  --gold-bg: #c9a03c;
+  --gold-bg-deep: #b4872b;
+  --green: #2f9c5e;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(180deg, #0f0b13, #241627);
+  background: linear-gradient(180deg, #faf7f2, #f0ebe2);
   background-attachment: fixed;
-  color: #e5e5e5;
+  color: #3d3731;
   scroll-behavior: smooth;
 }
 
@@ -14,7 +27,7 @@ body {
   top: 0;
   z-index: 10;
   backdrop-filter: blur(10px);
-  background: rgba(20, 10, 30, 0.5);
+  background: rgba(255, 250, 244, 0.85);
   display: flex;
   justify-content: center;
   padding: 1rem 0;
@@ -27,13 +40,13 @@ body {
   padding: 0;
 }
 .navbar a {
-  color: #ccc;
+  color: var(--text-2);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
 }
 .navbar a:hover, .navbar a.active {
-  color: #f0c46b;
+  color: var(--gold);
 }
 
 /* Sections */
@@ -42,7 +55,7 @@ body {
   text-align: center;
 }
 .section-title {
-  color: #f0c46b;
+  color: var(--gold);
   font-size: 2rem;
   margin-bottom: 2rem;
 }
@@ -65,13 +78,13 @@ body {
   margin-top: 1.5rem;
 }
 .social-icons a {
-  color: #ccc;
+  color: var(--text-2);
   margin: 0 0.5rem;
   font-size: 1.5rem;
   transition: color 0.3s;
 }
 .social-icons a:hover {
-  color: #f0c46b;
+  color: var(--gold);
 }
 
 /* Experience */
@@ -83,7 +96,7 @@ body {
 }
 .experience-card {
   width: 80%;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.7);
   backdrop-filter: blur(10px);
   border-radius: 15px;
   padding: 2rem;
@@ -99,7 +112,7 @@ body {
   margin-right: 1rem;
 }
 .experience-title {
-  color: #f0c46b;
+  color: var(--gold);
   margin-top: 1rem;
 }
 .experience-card p {
@@ -115,7 +128,7 @@ body {
 }
 .project-card {
   width: 300px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.7);
   border-radius: 15px;
   padding: 1rem;
   text-align: left;
@@ -125,8 +138,8 @@ body {
   border-radius: 10px;
 }
 .tags span {
-  background: rgba(240,196,107,0.2);
-  color: #f0c46b;
+  background: rgba(150,106,18,0.2);
+  color: var(--gold);
   padding: 0.3rem 0.6rem;
   border-radius: 8px;
   margin-right: 0.5rem;
@@ -157,8 +170,8 @@ body {
   margin-bottom: 2rem;
 }
 .btn {
-  background: #f0c46b;
-  color: #1b1524;
+  background: var(--gold);
+  color: var(--ink);
   padding: 0.8rem 1.6rem;
   border-radius: 10px;
   text-decoration: none;
@@ -166,5 +179,5 @@ body {
   transition: background 0.3s;
 }
 .btn:hover {
-  background: #e5b85f;
+  background: var(--gold-bg-deep);
 }
